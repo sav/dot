@@ -124,7 +124,7 @@
         counsel-web-search-action 'eww))
 
 (after! dired
-  (add-hook 'dired-mode-hook #'(lambda () (dired-omit-mode 1))))
+  (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1))))
 
 (after! elfeed
   (setq elfeed-search-filter "@6-months-ago"
@@ -295,7 +295,7 @@
           ("*starred*" (starred-name)) ("others" (not (starred-names))))))
 
 (after! image-dired
-  (add-hook 'dired-mode-hook #'(lambda () (local-set-key (kbd "C-<tab>") 'centaur-tabs-forward))))
+  (add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "C-<tab>") #'centaur-tabs-forward))))
 
 (after! ivy
   (map! :map ivy-minibuffer-map
@@ -588,7 +588,7 @@
         projectile-dynamic-mode-line nil
         projectile-known-projects-file (expand-file-name "~/.emacs-projectiles")
         projectile-mode-line-prefix " Proj")
-  (define-key projectile-mode-map (kbd "C-c r p") 'projectile-command-map))
+  (define-key projectile-mode-map (kbd "C-c r p") #'projectile-command-map))
 
 (after! pushbullet
   (setq pushbullet-api-key (password-store-get "PushBullet/API_KEY")))
@@ -612,7 +612,7 @@
 
 (after! rust-mode
   (add-hook 'rust-mode-hook 'lsp-deferred)
-  (add-hook 'rust-mode-hook #'(lambda () (local-set-key (kbd "C-c C-n") 'next-buffer))))
+  (add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c C-n") #'next-buffer))))
 
 (after! savehist
   (setq savehist-file (expand-file-name "~/.emacs-history")))
@@ -637,13 +637,16 @@
   (treemacs-load-theme 'all-the-icons))
 
 (after! vterm
-  (add-hook 'vterm-exit-functions #'(lambda (&optional buf _)
-                                      (interactive)
-                                      (delete-window (get-buffer-window buf))))
-  (add-hook 'term-setup #'(lambda ()
-                            (highlight-changes-mode -1)
-                            (whitespace-mode -1)))
-  (add-hook 'vterm-mode-hook #'(lambda () (local-set-key (kbd "C-S-v") 'term-paste))))
+  (add-hook 'vterm-exit-functions
+            (lambda (&optional buf _)
+              (interactive)
+              (delete-window (get-buffer-window buf))))
+  (add-hook 'term-setup
+            (lambda ()
+              (highlight-changes-mode -1)
+              (whitespace-mode -1)))
+  (add-hook 'vterm-mode-hook
+            (lambda () (local-set-key (kbd "C-S-v") #'term-paste))))
 
 
 (after! writeroom
@@ -666,7 +669,7 @@
         xwidget-webkit-download-dir (expand-file-name "~/dl")))
 
 (add-hook 'emacs-startup-hook 'ivy-mode) ; FIXME apparent compatibility issues
-                                         ;       between Emacs 29.x, Doom Emacs, and `ivy'.
+                                         ;   between Emacs 29.x, Doom Emacs, and `ivy'.
 
 ;;;
 ;;; $DOOMDIR/config.el ends here
