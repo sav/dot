@@ -124,6 +124,7 @@
         counsel-web-search-action 'eww))
 
 (after! dired
+  (add-hook 'dired-mode-hook (lambda () (local-unset-key (kbd "C-t"))))
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1))))
 
 (after! elfeed
