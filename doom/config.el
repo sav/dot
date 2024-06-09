@@ -648,6 +648,8 @@
   (add-hook 'vterm-mode-hook
             (lambda () (local-set-key (kbd "C-S-v") #'term-paste))))
 
+(after! winner
+  (winner-mode))
 
 (after! writeroom
   (setq writeroom-extra-line-spacing nil

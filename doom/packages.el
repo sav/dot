@@ -59,6 +59,7 @@
 (package! treemacs-all-the-icons)
 (package! uptimes)
 (package! vimrc-mode)
+(package! winner)
 (package! whitespace)
 (package! woman)
 (package! yaml-mode)
