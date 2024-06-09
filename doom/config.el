@@ -306,7 +306,7 @@
   (setq lsp-auto-guess-root nil
         lsp-auto-select-workspace nil
         lsp-keymap-prefix "C-c c")
-  (add-hook 'lsp-mode-hook #'(lambda () (add-hook 'before-save-hook #'lsp-format-buffer 0 t)))
+  (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
 (after! lsp-ui
