@@ -23,15 +23,19 @@
     (setq doom-theme 'doom-ayu-dark)
   (setq doom-theme 'doom-opera-light))
 
-(cond ((string-equal system-name "tal.local")
-       (if (eq doom-theme-style 'dark)
-           (setq doom-font-size 15
-                 doom-font-weight-default 'regular)
-         (setq doom-font-size 14
-               doom-font-weight-default 'medium)))
-      (t
-       (setq doom-font-size 16
-             doom-font-weight-default (if (eq doom-theme-style 'dark) 'regular 'medium))))
+(cond
+ ((string-equal system-name "tal.local")
+  (if (eq doom-theme-style 'dark)
+      (setq doom-font-size 15
+            doom-font-weight-default 'regular)
+    (setq doom-font-size 14
+          doom-font-weight-default 'medium)))
+ (t
+  (setq doom-font-size 16
+        doom-font-weight-default
+        (if (eq doom-theme-style 'dark)
+            'regular
+          'medium))))
 
 (setq doom-leader-alt-key "C-c d")
 
@@ -60,43 +64,13 @@
       tab-always-indent t
       vc-follow-symlinks t)
 
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
-;; Here are some additional functions/macros that will help you configure Doom.
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
-(after! alert
+(use-package! alert
+  :config
   (setq alert-default-style 'notifications))
 
-(after! all-the-icons-ivy
-  (add-hook 'after-init-hook 'all-the-icons-ivy-setup))
+(use-package! all-the-icons-ivy
+  :config
+  (add-hook 'after-init-hook #'all-the-icons-ivy-setup))
 
 (after! auth-source
   (setq auth-sources '("~/.authinfo.gpg" "~/.netrc")))
@@ -667,12 +641,13 @@
         writeroom-width 120))
 
 (after! xwidget
+  :config
   (setq xwidget-webkit-bookmark-jump-new-session t
         xwidget-webkit-cookie-file (expand-file-name "~/.emacs-webkit-cookie")
         xwidget-webkit-download-dir (expand-file-name "~/dl")))
 
-(add-hook 'emacs-startup-hook 'ivy-mode) ; FIXME apparent compatibility issues
-                                         ;   between Emacs 29.x, Doom Emacs, and `ivy'.
+;; FIXME apparent compatibility issues between Emacs 29.x, Doom Emacs, and `ivy'.
+(add-hook 'emacs-startup-hook #'ivy-mode)
 
 ;;;
 ;;; $DOOMDIR/config.el ends here
