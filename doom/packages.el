@@ -21,6 +21,7 @@
 (package! eat)
 (package! elpher)
 (package! fzf)
+(package! gcmh)
 (package! gdb-mi)
 (package! go-errcheck)
 (package! go-imports)

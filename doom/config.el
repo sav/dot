@@ -83,7 +83,7 @@
         bookmark-sort-flag t))
 
 (after! browse-url
-  (setq browse-url-browser-function 'browse-url-default-browser
+  (setq browse-url-browser-function #'browse-url-default-browser
         browse-url-chrome-program "my.xsel-browser"
         browse-url-chromium-program "my.xsel-browser"))
 
@@ -94,103 +94,106 @@
         centaur-tabs-set-bar 'under))
 
 (after! counsel
-  (setq counsel-search-engine 'google
-        counsel-web-search-action 'eww))
+  (setq counsel-search-engine 'google))
+
+(after! counsel-web
+  (setq counsel-web-search-action 'eww))
 
 (after! dired
   (add-hook 'dired-mode-hook (lambda () (local-unset-key (kbd "C-t"))))
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1))))
 
-(after! elfeed
-  (setq elfeed-search-filter "@6-months-ago"
-        elfeed-search-title-max-width 90
-        elfeed-search-title-min-width 40
-        elfeed-summary-width 140
-        elfeed-feeds
-        '("https://crg.eti.br/index.xml"
-          "https://blog.qutebrowser.org/feeds/all.rss.xml"
-          "http://www.pixelbeat.org/feed/rss2.xml"
-          "https://xairy.io/feed.xml"
-          "https://kura.gg/feeds/rss.xml"
-          "https://cppcon.org/feed/"
-          "https://sounds-like-hate.captivate.fm/rssfeed"
-          "https://kagifeedback.org/atom/t/release-notes"
-          "https://feeds2.feedburner.com/Cprogrammingcom/"
-          "https://www.schneier.com/feed/"
-          "https://blog.cmpxchg8b.com/feeds/posts/default?alt=rss"
-          "https://googleprojectzero.blogspot.com/feeds/posts/default?alt=rss"
-          "https://cppcon.org/feed/"
-          "https://isocpp.org/blog/rss/category/standardization"
-          "https://isocpp.org/blog/rss"
-          "https://www.phoronix.com/rss.php"
-          "https://insights.sei.cmu.edu/blog/feeds/topic/secure-development/atom/"
-          "https://seclists.org/rss/wireshark.rss"
-          "https://seclists.org/rss/snort.rss"
-          "https://seclists.org/rss/tcpdump.rss"
-          "https://seclists.org/rss/nmap-announce.rss"
-          "https://seclists.org/rss/fulldisclosure.rss"
-          "https://seclists.org/rss/securecoding.rss"
-          "https://seclists.org/rss/oss-sec.rss"
-          "https://seclists.org/rss/microsoft.rss"
-          "https://seclists.org/rss/pauldotcom.rss"
-          "https://seclists.org/rss/dailydave.rss"
-          "https://seclists.org/rss/bugtraq.rss"
-          "https://seclists.org/rss/nmap-dev.rss"
-          "https://blog.locut.us/feed/"
-          "https://googleprojectzero.blogspot.com/feeds/posts/default"
-          "https://rustsec.org/feed.xml"
-          "https://blog.m-ou.se/index.xml"
-          "https://readrust.net/security/feed.rss"
-          "https://readrust.net/all/feed.rss"
-          "https://ferrous-systems.com/blog/feed.xml"
-          "https://stegosaurusdormant.com/feed.xml"
-          "https://rustacean-station.org/podcast.rss"
-          "https://rusty-spike.blubrry.net/feed/"
-          "https://newrustacean.com/feed.xml"
-          "https://newrustacean.com/feed.xml"
-          "https://blog.japaric.io/index.xml"
-          "https://blog.rust-lang.org/feed.xml"
-          "https://www.reddit.com/r/Freenet/.rss"
-          "https://max-inden.de/index.xml"
-          "https://www.zerodayinitiative.com/blog/?format=rss"
-          "https://www.zerodayinitiative.com/rss/upcoming/"
-          "https://www.zerodayinitiative.com/rss/published/"
-          "http://seclists.org/rss/oss-sec.rss"
-          "http://www.schneier.com/blog/index.rdf"
-          "http://www.exploit-db.com/rss.php"
-          "http://seclists.org/rss/fulldisclosure.rss"
-          "http://rss.packetstormsecurity.com/news/"
-          "http://www.eff.org/rss/updates.xml"
-          "https://geti2p.net/en/feed/blog/atom"
-          "http://iscxml.sans.org/rssfeed.xml"
-          "https://www.cvedetails.com/vulnerability-feed.php?vendor_id=0&product_id=0&version_id=0&orderby=3&cvssscoremin=5"
-          "https://os.kaspersky.com/feed/"
-          "http://googleonlinesecurity.blogspot.com/atom.xml"
-          "http://blog.webroot.com/feed/"
-          "http://letsknowthings.com/feed/"
-          "https://c4ss.org/?feed=rss"
-          "http://blog.malwarebytes.org/feed/"
-          "http://www.securelist.com/en/rss/allupdates"
-          "https://taosecurity.blogspot.com/feeds/posts/default?alt=rss"
-          "http://erratasec.blogspot.com/feeds/posts/default"
-          "http://programming-journal.org/feed.rss"
-          "https://openai.com/feed.xml"
-          "http://blog.talosintel.com/feeds/posts/default?alt=rss"
-          "https://github.com/sgriffin53/raven/commits/master.atom"
-          "http://www.chess.com/rss/articles"
-          "http://www.chess.com/rss/news"
-          "https://chess24.com/en/read/news.rss"
-          "https://kadampalife.org/feed/"
-          "https://github.com/ipfs/ipfs-docs/commits/main.atom"
-          "https://github.com/ipfs/go-ipfs/commits/master.atom"
-          "https://api.reddit.com/timeline/me/492ff218-d4a4-45d9-a61d-f58b67fc8269"
-          "https://karthinks.com/index.xml"
-          "https://protesilaos.com/codelog.xml"
-          "https://www.reddit.com/r/planetemacs.rss"
-          "https://www.reddit.com/r/emacs.rss"
-          "https://sachachua.com/blog/category/emacs/feed/"
-          "https://sqrtminusone.xyz/posts/index.xml"
-          "http://ruzkuku.com/emacs.atom")))
+(use-package! elfeed
+  :custom
+  (elfeed-search-filter "@6-months-ago")
+  (elfeed-search-title-max-width 90)
+  (elfeed-search-title-min-width 40)
+  (elfeed-summary-width 140)
+  (elfeed-feeds
+   '("https://crg.eti.br/index.xml"
+     "https://blog.qutebrowser.org/feeds/all.rss.xml"
+     "http://www.pixelbeat.org/feed/rss2.xml"
+     "https://xairy.io/feed.xml"
+     "https://kura.gg/feeds/rss.xml"
+     "https://cppcon.org/feed/"
+     "https://sounds-like-hate.captivate.fm/rssfeed"
+     "https://kagifeedback.org/atom/t/release-notes"
+     "https://feeds2.feedburner.com/Cprogrammingcom/"
+     "https://www.schneier.com/feed/"
+     "https://blog.cmpxchg8b.com/feeds/posts/default?alt=rss"
+     "https://googleprojectzero.blogspot.com/feeds/posts/default?alt=rss"
+     "https://cppcon.org/feed/"
+     "https://isocpp.org/blog/rss/category/standardization"
+     "https://isocpp.org/blog/rss"
+     "https://www.phoronix.com/rss.php"
+     "https://insights.sei.cmu.edu/blog/feeds/topic/secure-development/atom/"
+     "https://seclists.org/rss/wireshark.rss"
+     "https://seclists.org/rss/snort.rss"
+     "https://seclists.org/rss/tcpdump.rss"
+     "https://seclists.org/rss/nmap-announce.rss"
+     "https://seclists.org/rss/fulldisclosure.rss"
+     "https://seclists.org/rss/securecoding.rss"
+     "https://seclists.org/rss/oss-sec.rss"
+     "https://seclists.org/rss/microsoft.rss"
+     "https://seclists.org/rss/pauldotcom.rss"
+     "https://seclists.org/rss/dailydave.rss"
+     "https://seclists.org/rss/bugtraq.rss"
+     "https://seclists.org/rss/nmap-dev.rss"
+     "https://blog.locut.us/feed/"
+     "https://googleprojectzero.blogspot.com/feeds/posts/default"
+     "https://rustsec.org/feed.xml"
+     "https://blog.m-ou.se/index.xml"
+     "https://readrust.net/security/feed.rss"
+     "https://readrust.net/all/feed.rss"
+     "https://ferrous-systems.com/blog/feed.xml"
+     "https://stegosaurusdormant.com/feed.xml"
+     "https://rustacean-station.org/podcast.rss"
+     "https://rusty-spike.blubrry.net/feed/"
+     "https://newrustacean.com/feed.xml"
+     "https://newrustacean.com/feed.xml"
+     "https://blog.japaric.io/index.xml"
+     "https://blog.rust-lang.org/feed.xml"
+     "https://www.reddit.com/r/Freenet/.rss"
+     "https://max-inden.de/index.xml"
+     "https://www.zerodayinitiative.com/blog/?format=rss"
+     "https://www.zerodayinitiative.com/rss/upcoming/"
+     "https://www.zerodayinitiative.com/rss/published/"
+     "http://seclists.org/rss/oss-sec.rss"
+     "http://www.schneier.com/blog/index.rdf"
+     "http://www.exploit-db.com/rss.php"
+     "http://seclists.org/rss/fulldisclosure.rss"
+     "http://rss.packetstormsecurity.com/news/"
+     "http://www.eff.org/rss/updates.xml"
+     "https://geti2p.net/en/feed/blog/atom"
+     "http://iscxml.sans.org/rssfeed.xml"
+     "https://www.cvedetails.com/vulnerability-feed.php?vendor_id=0&product_id=0&version_id=0&orderby=3&cvssscoremin=5"
+     "https://os.kaspersky.com/feed/"
+     "http://googleonlinesecurity.blogspot.com/atom.xml"
+     "http://blog.webroot.com/feed/"
+     "http://letsknowthings.com/feed/"
+     "https://c4ss.org/?feed=rss"
+     "http://blog.malwarebytes.org/feed/"
+     "http://www.securelist.com/en/rss/allupdates"
+     "https://taosecurity.blogspot.com/feeds/posts/default?alt=rss"
+     "http://erratasec.blogspot.com/feeds/posts/default"
+     "http://programming-journal.org/feed.rss"
+     "https://openai.com/feed.xml"
+     "http://blog.talosintel.com/feeds/posts/default?alt=rss"
+     "https://github.com/sgriffin53/raven/commits/master.atom"
+     "http://www.chess.com/rss/articles"
+     "http://www.chess.com/rss/news"
+     "https://chess24.com/en/read/news.rss"
+     "https://kadampalife.org/feed/"
+     "https://github.com/ipfs/ipfs-docs/commits/main.atom"
+     "https://github.com/ipfs/go-ipfs/commits/master.atom"
+     "https://api.reddit.com/timeline/me/492ff218-d4a4-45d9-a61d-f58b67fc8269"
+     "https://karthinks.com/index.xml"
+     "https://protesilaos.com/codelog.xml"
+     "https://www.reddit.com/r/planetemacs.rss"
+     "https://www.reddit.com/r/emacs.rss"
+     "https://sachachua.com/blog/category/emacs/feed/"
+     "https://sqrtminusone.xyz/posts/index.xml"
+     "http://ruzkuku.com/emacs.atom")))
 
 (after! epa
   (setq epa-mail-aliases '(("savio.sena@acm.org")
@@ -198,8 +201,7 @@
 
 (after! epg
   (require 'pinentry)
-  (setq epg-pinentry-mode 'ask)
-  (pinentry-start))
+  (setq epg-pinentry-mode 'ask))
 
 (after! eshell
   (defalias 'e 'find-file)
@@ -210,6 +212,10 @@
   (setq eww-default-download-directory (expand-file-name "~/dl")
         eww-search-prefix "https://www.google.com/search?q="))
 
+(use-package! gcmh
+  :config
+  (gcmh-mode 1))
+
 (after! gdb
   (setq gdb-display-io-nopopup t
         gdb-many-windows nil
@@ -218,11 +224,13 @@
 (after! flycheck
   (setq flycheck-error-list-minimum-level nil))
 
-(after! google-translate
+(use-package! google-translate
+  :config
   (setq google-translate-default-source-language "pt"
         google-translate-default-target-language "en"))
 
-(after! hl-todo
+(use-package! hl-todo
+  :config
   (setq hl-todo-keyword-faces
         '(("TODO" warning bold)
           ("FIXME" error bold)
@@ -269,39 +277,50 @@
                       (mode . gnus-article-mode)))
           ("*starred*" (starred-name)) ("others" (not (starred-names))))))
 
-(after! image-dired
+(use-package! image-dired
+  :config
   (add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "C-<tab>") #'centaur-tabs-forward))))
+
+(use-package! info+)
 
 (after! ivy
   (map! :map ivy-minibuffer-map
-      "C-<return>" #'ivy-immediate-done))
+        "C-<return>" #'ivy-immediate-done))
 
-(after! lsp
-  (require 'lsp-ui)
-  (setq lsp-auto-guess-root nil
-        lsp-auto-select-workspace nil
-        lsp-keymap-prefix "C-c c")
+(use-package! lsp
+  :init
+  (require 'lsp)
+  (require 'lsp-rust)
+  :custom
+  (lsp-keymap-prefix "C-c c")
+  (lsp-auto-select-workspace nil)
+  (lsp-auto-guess-root nil)
+  :config
   (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
-(after! lsp-ui
+(use-package! lsp-ui
+  :init
+  (require 'lsp-ui)
   (require 'lsp-ui-peek)
-  (setq lsp-ui-doc-mode t
-        lsp-ui-doc-enable t
-        lsp-ui-doc-position 'bottom
-        lsp-ui-doc-text-scale-level 0
-        lsp-ui-doc-show-with-cursor t
-        lsp-eldoc-enable-hover nil
-        lsp-eldoc-render-all t
-        lsp-ui-peek-mode t
-        lsp-ui-peek-enable t
-        lsp-ui-flycheck-enable t
-        lsp-ui-peek-enable t
-        lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-hover t)
-  (add-hook 'lsp-after-initialize-hook 'lsp-ui-mode)
-  (add-hook 'lsp-ui-mode-hook 'lsp-ui-peek-mode)
-  (add-hook 'lsp-ui-mode-hook 'lsp-ui-doc-mode))
+  :custom
+  (lsp-ui-sideline-show-hover t)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-peek-enable t)
+  (lsp-ui-peek-enable t)
+  (lsp-ui-peek-mode t)
+  (lsp-eldoc-render-all t)
+  (lsp-eldoc-enable-hover nil)
+  (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-text-scale-level 0)
+  (lsp-ui-doc-position 'bottom)
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-mode t)
+  (lsp-ui-flycheck-enable t)
+  :config
+  (add-hook 'lsp-after-initialize-hook #'lsp-ui-mode)
+  (add-hook 'lsp-ui-mode-hook #'lsp-ui-peek-mode)
+  (add-hook 'lsp-ui-mode-hook #'lsp-ui-doc-mode))
 
 (after! lispy
   (setq lispy-insert-space-after-wrap t))
@@ -467,7 +486,7 @@
           ("ABORT" :foreground "DarkCyan" :weight bold :height 1.0)
           ("DROP" :foreground "DarkOrange4" :weight bold :height 1.0))
         org-use-tag-inheritance nil)
-  (add-hook 'org-mode-hook 'org-superstar-mode))
+  (add-hook 'org-mode-hook #'org-superstar-mode))
 
 (after! org-capture
   (setq org-capture-templates
@@ -525,10 +544,12 @@
            :jump-to-captured t
            :empty-lines-after 2))))
 
-(after! org-notify
+(use-package! org-notify
+  :config
   (setq org-notify-max-notifications-per-run 1))
 
-(after! org-superstar
+(use-package! org-superstar
+  :config
   (setq org-superstar-item-bullet-alist '((?* . ?•) (?+ . ?◦) (?- . ?‣))
         org-superstar-special-todo-items t
         org-superstar-remove-leading-stars t
@@ -549,13 +570,16 @@
 
 (after! parinfer
   (setq parinfer-extensions
-        '(defaults ; Should be included.
-          pretty-parens ; Different paren styles for different modes.
+        '(defaults
+          pretty-parens
           smart-tab ; C-b & C-f jump positions and smart shift with tab & S-tab.
           smart-yank)))
 
 (after! pass ;; https://jherrlin.github.io/posts/emacs-gnupg-and-pass/
   (setq epg-pinentry-mode 'loopback))
+
+(after! pinentry
+  (pinentry-start))
 
 (after! projectile
   (setq projectile-auto-discover nil
@@ -565,7 +589,8 @@
         projectile-mode-line-prefix " Proj")
   (define-key projectile-mode-map (kbd "C-c r p") #'projectile-command-map))
 
-(after! pushbullet
+(use-package! pushbullet
+  :config
   (setq pushbullet-api-key (password-store-get "PushBullet/API_KEY")))
 
 (after! recentf
@@ -585,8 +610,10 @@
         rmail-redisplay-summary t
         rmail-summary-window-size 92))
 
-(after! rust-mode
-  (add-hook 'rust-mode-hook 'lsp-deferred)
+(use-package! rust-mode
+  :config
+  (add-hook 'rust-mode-hook #'lsp-deferred)
+  (add-hook 'rust-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c C-n") #'next-buffer))))
 
 (after! savehist
@@ -608,7 +635,8 @@
 (after! tab-bar
   (tab-bar-mode 1))
 
-(after! treemacs-all-the-icons
+(use-package! treemacs-all-the-icons
+  :config
   (treemacs-load-theme 'all-the-icons))
 
 (after! vterm
@@ -623,7 +651,8 @@
   (add-hook 'vterm-mode-hook
             (lambda () (local-set-key (kbd "C-S-v") #'term-paste))))
 
-(after! winner
+(use-package! winner
+  :config
   (winner-mode))
 
 (after! writeroom
