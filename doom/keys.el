@@ -30,302 +30,304 @@
 
 ;; Function Keys
 
-(global-set-key (kbd "S-<f1>") #'eval-buffer)
+(map! "S-<f1>" #'eval-buffer)
 
-(global-set-key (kbd "C-<f1>") #'eval-region)
+(map! "C-<f1>" #'eval-region)
 
-(global-set-key (kbd "<f2>") #'recompile)
+(map! "<f2>" #'recompile)
 
-(global-set-key (kbd "S-<f2>") #'doom/reload)
+(map! "S-<f2>" #'doom/reload)
 
-(global-set-key (kbd "<f3>") #'flycheck-buffer)
+(map! "<f3>" #'flycheck-buffer)
 
-(global-set-key (kbd "S-<f3>") #'flycheck-list-errors)
+(map! "S-<f3>" #'flycheck-list-errors)
 
-(global-set-key (kbd "<f12>") #'toggle-frame-tab-bar)
+(map! "<f12>" #'toggle-frame-tab-bar)
 
-(global-set-key (kbd "S-<f12>") #'my/debug-on-error)
+(map! "S-<f12>" #'my/debug-on-error)
 
 
 ;; Mouse
 ;; (see https://wilkesley.org/~ian/xah/emacs/emacs_mouse_wheel_config.html)
 
-(global-set-key (kbd "<mouse-2>") #'clipboard-yank)
+(map! "<mouse-2>" #'clipboard-yank)
 
 
 ;; Prefix: C-
 
-(global-set-key (kbd "C-t") #'my/tab/new)
+(map! "C-t" #'my/tab/new)
 
-(global-set-key (kbd "C->") #'xref-find-definitions-other-window)
+(map! "C->" #'xref-find-definitions-other-window)
 
-(global-set-key (kbd "C-,") #'pop-tag-mark)
+(map! "C-," #'pop-tag-mark)
 
-(global-set-key (kbd "C-*") #'my/highlight)
+(map! "C-*" #'my/highlight)
 
-(global-set-key (kbd "C-?") #'eldoc-doc-buffer)
+(map! "C-?" #'treemacs)
 
-(global-set-key (kbd "C-/") #'treemacs-select-window)
+(map! "C-/" #'treemacs-select-window)
 
-(global-set-key (kbd "C-<tab>") #'tab-next)
+(map! "C-<tab>" #'tab-next)
 
-(global-set-key (kbd "C-<iso-lefttab>") #'tab-previous)
+(map! "C-<iso-lefttab>" #'tab-previous)
 
-(global-set-key (kbd "C-}") #'tab-move)
+(map! "C-}" #'tab-move)
 
-(global-set-key (kbd "C-{") (lambda () (interactive) (tab-move -1)))
+(map! "C-{" (lambda () (interactive) (tab-move -1)))
 
 
 ;; Prefix: C-S-
 
-(global-set-key (kbd "C-S-a") #'other-window)
+(map! "C-S-a" #'other-window)
 
-(global-set-key (kbd "C-S-d") #'delete-window)
+(map! "C-S-d" #'delete-window)
 
-(global-set-key (kbd "C-S-e") #'eshell)
+(map! "C-S-e" #'eshell)
 
-(global-set-key (kbd "C-S-h") #'split-window-vertically)
+(map! "C-S-h" #'split-window-vertically)
 
-(global-set-key (kbd "C-S-k") #'kill-current-buffer)
+(map! "C-S-k" #'kill-current-buffer)
 
-(global-set-key (kbd "C-S-o") #'delete-other-windows)
+(map! "C-S-o" #'delete-other-windows)
 
-(global-set-key (kbd "C-S-p") (lambda () (interactive) (other-window -1)))
+(map! "C-S-p" (lambda () (interactive) (other-window -1)))
 
-(global-set-key (kbd "C-S-q") #'bury-buffer)
+(map! "C-S-q" #'bury-buffer)
 
-(global-set-key (kbd "C-S-r") #'unbury-buffer)
+(map! "C-S-r" #'unbury-buffer)
 
-(global-set-key (kbd "C-S-s") #'+vterm/toggle)
+(map! "C-S-s" #'+vterm/toggle)
 
-(global-set-key (kbd "C-S-t") #'tab-undo)
+(map! "C-S-t" #'tab-undo)
 
-(global-set-key (kbd "C-S-v") #'split-window-horizontally)
+(map! "C-S-v" #'split-window-horizontally)
 
-(global-set-key (kbd "C-S-w") #'tab-bar-close-tab)
+(map! "C-S-w" #'tab-bar-close-tab)
 
 
 ;; Prefix: C-M-
 
-(global-set-key (kbd "C-M-/") (lambda () (interactive) (treemacs-select-window) (delete-window)))
+(map! "C-M-/" (lambda () (interactive) (treemacs-select-window) (delete-window)))
 
-(global-set-key (kbd "C-M-?") #'treemacs-select-directory)
+(map! "C-M-?" #'treemacs-select-directory)
 
 
 ;; Prefix: C-M-S-
 
-(global-set-key (kbd "C-M-S-c") #'switch-to-minibuffer)
+(map! "C-M-S-c" #'switch-to-minibuffer)
 
 
 ;; Prefix: C-c
 
-(global-set-key (kbd "C-c F") #'toggle-frame-fullscreen)
+(map! "C-c F" #'toggle-frame-fullscreen)
 
-(global-set-key (kbd "C-c N") #'goto-line)
+(map! "C-c N" #'goto-line)
 
-(global-set-key (kbd "C-c Q") #'kill-emacs)
+(map! "C-c Q" #'kill-emacs)
 
-(global-set-key (kbd "C-c R") #'rename-buffer)
+(map! "C-c R" #'rename-buffer)
 
-(global-set-key (kbd "C-c Z") #'winner-undo)
+(map! "C-c Z" #'winner-undo)
 
-(global-set-key (kbd "C-c w") #'clipboard-kill-ring-save)
+(map! "C-c w" #'clipboard-kill-ring-save)
 
-(global-set-key (kbd "C-c y") #'clipboard-yank)
+(map! "C-c y" #'clipboard-yank)
 
-(global-set-key (kbd "C-c <left>") #'winner-undo)
+(map! "C-c <left>" #'winner-undo)
 
-(global-set-key (kbd "C-c <tab>") #'+zen/toggle-fullscreen)
+(map! "C-c <tab>" #'+zen/toggle-fullscreen)
 
-(global-set-key (kbd "C-c C-<tab>") (lambda () (interactive) (writeroom-adjust-width 15)))
+(map! "C-c C-<tab>" (lambda () (interactive) (writeroom-adjust-width 15)))
 
-(global-set-key (kbd "C-c C-<iso-lefttab>") (lambda () (interactive) (writeroom-adjust-width -15)))
+(map! "C-c C-<iso-lefttab>" (lambda () (interactive) (writeroom-adjust-width -15)))
 
-(global-set-key (kbd "C-c #") #'add-file-local-variable-prop-line)
+(map! "C-c #" #'add-file-local-variable-prop-line)
 
-(global-set-key (kbd "C-c C-!") #'tramp-cleanup-all-connections)
+(map! "C-c C-!" #'tramp-cleanup-all-connections)
 
-(global-set-key (kbd "C-c C-+") #'my/window/enlarge)
+(map! "C-c C-+" #'my/window/enlarge)
 
-(global-set-key (kbd "C-c C--") #'my/window/shrink)
+(map! "C-c C--" #'my/window/shrink)
 
-(global-set-key (kbd "C-c C-{") #'centaur-tabs-move-current-tab-to-left)
+(map! "C-c C-{" #'centaur-tabs-move-current-tab-to-left)
 
-(global-set-key (kbd "C-c C-}") #'centaur-tabs-move-current-tab-to-right)
+(map! "C-c C-}" #'centaur-tabs-move-current-tab-to-right)
 
 
 ;; Prefix: C-c C-
 
-(global-set-key (kbd "C-c C-n") #'next-buffer)
+(map! "C-c C-n" #'next-buffer)
 
-(global-set-key (kbd "C-c C-p") #'previous-buffer)
+(map! "C-c C-p" #'previous-buffer)
 
 
 ;; Prefix: C-c C-c
 
-(global-set-key (kbd "C-c C-c o") #'browse-url-at-point)
+(map! "C-c C-c o" #'browse-url-at-point)
 
 
 ;; Prefix: C-c f
 
-(global-set-key (kbd "C-c f d") #'fzf-directory)
+(map! "C-c f d" #'fzf-directory)
 
-(global-set-key (kbd "C-c f F") #'fzf-find-file-in-dir)
+(map! "C-c f F" #'fzf-find-file-in-dir)
 
-(global-set-key (kbd "C-c f f") #'counsel-recentf)
+(map! "C-c f f" #'counsel-recentf)
 
 
 ;; Prefix: C-c g
 
-(global-set-key (kbd "C-c g g") #'rg)
+(map! "C-c g g" #'rg)
 
 
 ;; Prefix: C-c m (Mail)
 
-(global-set-key (kbd "C-c m R") #'mu4e-headers-mark-all-unread-read)
+(map! "C-c m R" #'mu4e-headers-mark-all-unread-read)
 
 
 ;; Prefix: C-c o
 
-(global-set-key (kbd "C-c o a") (lambda () (interactive) (my/org/open "agenda")))
+(map! "C-c o a" (lambda () (interactive) (my/org/open "agenda")))
 
-(global-set-key (kbd "C-c o b") (lambda () (interactive) (my/org/open "knowledgebase")))
+(map! "C-c o b" (lambda () (interactive) (my/org/open "knowledgebase")))
 
-(global-set-key (kbd "C-c o c") (lambda () (interactive) (my/org/open "capture")))
+(map! "C-c o c" (lambda () (interactive) (my/org/open "capture")))
 
-(global-set-key (kbd "C-c o h") (lambda () (interactive) (my/org/open "habits")))
+(map! "C-c o h" (lambda () (interactive) (my/org/open "habits")))
 
-(global-set-key (kbd "C-c o i") (lambda () (interactive) (my/org/open-plain "inbox")))
+(map! "C-c o i" (lambda () (interactive) (my/org/open-plain "inbox")))
 
-(global-set-key (kbd "C-c o k") (lambda () (interactive) (my/org/open "keyring")))
+(map! "C-c o k" (lambda () (interactive) (my/org/open "keyring")))
 
-(global-set-key (kbd "C-c o l") (lambda () (interactive) (my/org/open "life")))
+(map! "C-c o l" (lambda () (interactive) (my/org/open "life")))
 
-(global-set-key (kbd "C-c o n") (lambda () (interactive) (my/org/open "notes")))
+(map! "C-c o n" (lambda () (interactive) (my/org/open "notes")))
 
-(global-set-key (kbd "C-c o s") #'+doom-dashboard/open)
+(map! "C-c o s" #'+doom-dashboard/open)
 
-(global-set-key (kbd "C-c o S") #'my/scratch/show)
+(map! "C-c o S" #'my/scratch/show)
 
-(global-set-key (kbd "C-c o t") (lambda () (interactive) (my/org/open "todo")))
+(map! "C-c o t" (lambda () (interactive) (my/org/open "todo")))
 
 
 ;; Prefix: C-c r
 
-(global-set-key (kbd "C-c r l") #'consult-bookmark)
+(map! "C-c r l" #'consult-bookmark)
 
-(global-set-key (kbd "C-c r t") #'google-translate-smooth-translate)
+(map! "C-c r t" #'google-translate-smooth-translate)
 
 
 ;; Prefix: C-x
 
-(global-set-key (kbd "C-x B") #'consult-buffer)
+(map! "C-x B" #'consult-buffer)
 
-(global-set-key (kbd "C-x k") #'my/buffer/kill)
+(map! "C-x k" #'my/buffer/kill)
 
-(global-set-key (kbd "C-x K") #'my/buffer/kill-window)
+(map! "C-x K" #'my/buffer/kill-window)
 
-(global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
+(map! "C-x p" (lambda () (interactive) (other-window -1)))
 
-(global-set-key (kbd "C-x P") #'+popup/other)
+(map! "C-x P" #'+popup/other)
 
-(global-set-key (kbd "C-x S") #'my/save-all)
+(map! "C-x S" #'my/save-all)
 
-(global-set-key (kbd "C-x K") #'my/close-all)
+(map! "C-x K" #'my/close-all)
 
-(global-set-key (kbd "C-x 5 5") #'other-tab-prefix)
+(map! "C-x 5 5" #'other-tab-prefix)
 
 
 ;; Prefix: M-
 
-(global-set-key (kbd "M-1") (lambda () (interactive) (tab-select '1)))
+(map! "M-," #'pop-tag-mark)
 
-(global-set-key (kbd "M-2") (lambda () (interactive) (tab-select '2)))
+(map! "M-1" (lambda () (interactive) (tab-select '1)))
 
-(global-set-key (kbd "M-3") (lambda () (interactive) (tab-select '3)))
+(map! "M-2" (lambda () (interactive) (tab-select '2)))
 
-(global-set-key (kbd "M-4") (lambda () (interactive) (tab-select '4)))
+(map! "M-3" (lambda () (interactive) (tab-select '3)))
 
-(global-set-key (kbd "M-5") (lambda () (interactive) (tab-select '5)))
+(map! "M-4" (lambda () (interactive) (tab-select '4)))
 
-(global-set-key (kbd "M-6") (lambda () (interactive) (tab-select '6)))
+(map! "M-5" (lambda () (interactive) (tab-select '5)))
 
-(global-set-key (kbd "M-7") (lambda () (interactive) (tab-select '7)))
+(map! "M-6" (lambda () (interactive) (tab-select '6)))
 
-(global-set-key (kbd "M-8") (lambda () (interactive) (tab-select '8)))
+(map! "M-7" (lambda () (interactive) (tab-select '7)))
 
-(global-set-key (kbd "M-9") (lambda () (interactive) (tab-select '9)))
+(map! "M-8" (lambda () (interactive) (tab-select '8)))
+
+(map! "M-9" (lambda () (interactive) (tab-select '9)))
 
 
 ;; Prefix: C-z (Tab-Bar)
 
-(global-set-key (kbd "C-z C-c") #'my/tab/new)
+(map! "C-z C-c" #'my/tab/new)
 
-(global-set-key (kbd "C-z c") #'my/tab/new)
+(map! "C-z c" #'my/tab/new)
 
-(global-set-key (kbd "C-z ,") #'tab-rename)
+(map! "C-z ," #'tab-rename)
 
-(global-set-key (kbd "C-z C-,") #'tab-rename)
+(map! "C-z C-," #'tab-rename)
 
-(global-set-key (kbd "C-z .") #'tab-move)
+(map! "C-z ." #'tab-move)
 
-(global-set-key (kbd "C-z C-.") #'tab-move)
+(map! "C-z C-." #'tab-move)
 
-(global-set-key (kbd "C-z k") #'tab-close)
+(map! "C-z k" #'tab-close)
 
-(global-set-key (kbd "C-z C-k") #'tab-close)
+(map! "C-z C-k" #'tab-close)
 
-(global-set-key (kbd "C-z 0") #'tab-undo)
+(map! "C-z 0" #'tab-undo)
 
-(global-set-key (kbd "C-z C-0") #'tab-undo)
+(map! "C-z C-0" #'tab-undo)
 
-(global-set-key (kbd "C-z n") #'tab-next)
+(map! "C-z n" #'tab-next)
 
-(global-set-key (kbd "C-z C-n") #'tab-next)
+(map! "C-z C-n" #'tab-next)
 
-(global-set-key (kbd "C-z p") #'tab-previous)
+(map! "C-z p" #'tab-previous)
 
-(global-set-key (kbd "C-z C-p") #'tab-previous)
+(map! "C-z C-p" #'tab-previous)
 
-(global-set-key (kbd "C-z l") #'tab-recent)
+(map! "C-z l" #'tab-recent)
 
-(global-set-key (kbd "C-z C-l") #'tab-recent)
+(map! "C-z C-l" #'tab-recent)
 
-(global-set-key (kbd "C-z g") #'tab-group)
+(map! "C-z g" #'tab-group)
 
-(global-set-key (kbd "C-z C-g") #'tab-group)
+(map! "C-z C-g" #'tab-group)
 
-(global-set-key (kbd "C-z K") #'tab-close-group)
+(map! "C-z K" #'tab-close-group)
 
-(global-set-key (kbd "C-z C-S-k") #'tab-close-group)
+(map! "C-z C-S-k" #'tab-close-group)
 
-(global-set-key (kbd "C-z b") #'switch-to-buffer-other-tab)
+(map! "C-z b" #'switch-to-buffer-other-tab)
 
-(global-set-key (kbd "C-z C-b") #'switch-to-buffer-other-tab)
+(map! "C-z C-b" #'switch-to-buffer-other-tab)
 
-(global-set-key (kbd "C-z f") #'find-file-other-tab)
+(map! "C-z f" #'find-file-other-tab)
 
-(global-set-key (kbd "C-z C-f") #'find-file-other-tab)
+(map! "C-z C-f" #'find-file-other-tab)
 
-(global-set-key (kbd "C-z C-z") #'other-tab-prefix)
+(map! "C-z C-z" #'other-tab-prefix)
 
-(global-set-key (kbd "C-z 1") (lambda () (interactive) (tab-select '1)))
+(map! "C-z 1" (lambda () (interactive) (tab-select '1)))
 
-(global-set-key (kbd "C-z 2") (lambda () (interactive) (tab-select '2)))
+(map! "C-z 2" (lambda () (interactive) (tab-select '2)))
 
-(global-set-key (kbd "C-z 3") (lambda () (interactive) (tab-select '3)))
+(map! "C-z 3" (lambda () (interactive) (tab-select '3)))
 
-(global-set-key (kbd "C-z 4") (lambda () (interactive) (tab-select '4)))
+(map! "C-z 4" (lambda () (interactive) (tab-select '4)))
 
-(global-set-key (kbd "C-z 5") (lambda () (interactive) (tab-select '5)))
+(map! "C-z 5" (lambda () (interactive) (tab-select '5)))
 
-(global-set-key (kbd "C-z 6") (lambda () (interactive) (tab-select '6)))
+(map! "C-z 6" (lambda () (interactive) (tab-select '6)))
 
-(global-set-key (kbd "C-z 7") (lambda () (interactive) (tab-select '7)))
+(map! "C-z 7" (lambda () (interactive) (tab-select '7)))
 
-(global-set-key (kbd "C-z 8") (lambda () (interactive) (tab-select '8)))
+(map! "C-z 8" (lambda () (interactive) (tab-select '8)))
 
-(global-set-key (kbd "C-z 9") (lambda () (interactive) (tab-select '9)))
+(map! "C-z 9" (lambda () (interactive) (tab-select '9)))
 
 ;;;
 ;;; $DOOMDIR/keys.el ends here
