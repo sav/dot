@@ -17,7 +17,7 @@
 (setq user-full-name "Savio Sena"
       user-mail-address "savio.sena@gmail.com")
 
-(setq doom-theme-style 'dark)
+(setq doom-theme-style 'light)
 
 (if (eq doom-theme-style 'dark)
     (setq doom-theme 'doom-ayu-dark)
@@ -40,7 +40,7 @@
 (setq doom-leader-alt-key "C-c d")
 
 (setq doom-big-font-size 20
-      doom-font-default "Iosevka Curly"
+      doom-font-default "Iosevka"
       doom-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
       doom-big-font (font-spec :family doom-font-default :size doom-big-font-size :weight doom-font-weight-default)
       doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
@@ -64,12 +64,10 @@
       tab-always-indent t
       vc-follow-symlinks t)
 
-(use-package! alert
-  :config
+(after! alert
   (setq alert-default-style 'notifications))
 
-(use-package! all-the-icons-ivy
-  :config
+(after! all-the-icons-ivy
   (add-hook 'after-init-hook #'all-the-icons-ivy-setup))
 
 (after! auth-source
@@ -103,13 +101,12 @@
   (add-hook 'dired-mode-hook (lambda () (local-unset-key (kbd "C-t"))))
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1))))
 
-(use-package! elfeed
-  :custom
-  (elfeed-search-filter "@6-months-ago")
-  (elfeed-search-title-max-width 90)
-  (elfeed-search-title-min-width 40)
-  (elfeed-summary-width 140)
-  (elfeed-feeds
+(after! elfeed
+  (setq elfeed-search-filter "@6-months-ago")
+  (setq elfeed-search-title-max-width 90)
+  (setq elfeed-search-title-min-width 40)
+  (setq elfeed-summary-width 140)
+  (setq elfeed-feeds
    '("https://without.boats/index.xml"
      "https://smallcultfollowing.com/babysteps/index.xml"
      "https://lord.io/feed.xml"
@@ -240,8 +237,7 @@
   (setq eww-default-download-directory (expand-file-name "~/dl")
         eww-search-prefix "https://www.google.com/search?q="))
 
-(use-package! gcmh
-  :config
+(after! gcmh
   (gcmh-mode 1))
 
 (after! gdb
@@ -252,13 +248,11 @@
 (after! flycheck
   (setq flycheck-error-list-minimum-level nil))
 
-(use-package! google-translate
-  :config
+(after! google-translate
   (setq google-translate-default-source-language "pt"
         google-translate-default-target-language "en"))
 
-(use-package! hl-todo
-  :config
+(after! hl-todo
   (setq hl-todo-keyword-faces
         '(("TODO" warning bold)
           ("FIXME" error bold)
@@ -305,47 +299,40 @@
                       (mode . gnus-article-mode)))
           ("*starred*" (starred-name)) ("others" (not (starred-names))))))
 
-(use-package! image-dired
-  :config
+(after! image-dired
   (add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "C-<tab>") #'centaur-tabs-forward))))
 
-(use-package! info+)
+(after! info+)
 
 (after! ivy
   (map! :map ivy-minibuffer-map
         "C-<return>" #'ivy-immediate-done))
 
-(use-package! lsp
-  :init
+(after! lsp
   (require 'lsp)
   (require 'lsp-rust)
-  :custom
-  (lsp-keymap-prefix "C-c c")
-  (lsp-auto-select-workspace nil)
-  (lsp-auto-guess-root nil)
-  :config
+  (setq lsp-keymap-prefix "C-c c")
+  (setq lsp-auto-select-workspace nil)
+  (setq lsp-auto-guess-root nil)
   (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
-(use-package! lsp-ui
-  :init
+(after! lsp-ui
   (require 'lsp-ui)
   (require 'lsp-ui-peek)
-  :custom
-  (lsp-ui-sideline-show-hover t)
-  (lsp-ui-sideline-enable t)
-  (lsp-ui-peek-enable t)
-  (lsp-ui-peek-enable t)
-  (lsp-ui-peek-mode t)
-  (lsp-eldoc-render-all t)
-  (lsp-eldoc-enable-hover nil)
-  (lsp-ui-doc-show-with-cursor t)
-  (lsp-ui-doc-text-scale-level 0)
-  (lsp-ui-doc-position 'bottom)
-  (lsp-ui-doc-enable t)
-  (lsp-ui-doc-mode t)
-  (lsp-ui-flycheck-enable t)
-  :config
+  (setq lsp-ui-sideline-show-hover t)
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-enable t)
+  (setq lsp-ui-peek-mode t)
+  (setq lsp-eldoc-render-all t)
+  (setq lsp-eldoc-enable-hover nil)
+  (setq lsp-ui-doc-show-with-cursor t)
+  (setq lsp-ui-doc-text-scale-level 0)
+  (setq lsp-ui-doc-position 'bottom)
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-doc-mode t)
+  (setq lsp-ui-flycheck-enable t)
   (add-hook 'lsp-after-initialize-hook #'lsp-ui-mode)
   (add-hook 'lsp-ui-mode-hook #'lsp-ui-peek-mode)
   (add-hook 'lsp-ui-mode-hook #'lsp-ui-doc-mode))
@@ -572,12 +559,10 @@
            :jump-to-captured t
            :empty-lines-after 2))))
 
-(use-package! org-notify
-  :config
+(after! org-notify
   (setq org-notify-max-notifications-per-run 1))
 
-(use-package! org-superstar
-  :config
+(after! org-superstar
   (setq org-superstar-item-bullet-alist '((?* . ?•) (?+ . ?◦) (?- . ?‣))
         org-superstar-special-todo-items t
         org-superstar-remove-leading-stars t
@@ -617,8 +602,7 @@
         projectile-mode-line-prefix " Proj")
   (define-key projectile-mode-map (kbd "C-c r p") #'projectile-command-map))
 
-(use-package! pushbullet
-  :config
+(after! pushbullet
   (setq pushbullet-api-key (password-store-get "PushBullet/API_KEY")))
 
 (after! recentf
@@ -638,8 +622,7 @@
         rmail-redisplay-summary t
         rmail-summary-window-size 92))
 
-(use-package! rust-mode
-  :config
+(after! rust-mode
   (add-hook 'rust-mode-hook #'lsp-deferred)
   (add-hook 'rust-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c C-n") #'next-buffer))))
@@ -663,8 +646,7 @@
 (after! tab-bar
   (tab-bar-mode 1))
 
-(use-package! treemacs-all-the-icons
-  :config
+(after! treemacs-all-the-icons
   (treemacs-load-theme 'all-the-icons))
 
 (after! vterm
@@ -679,8 +661,7 @@
   (add-hook 'vterm-mode-hook
             (lambda () (local-set-key (kbd "C-S-v") #'term-paste))))
 
-(use-package! winner
-  :config
+(after! winner
   (winner-mode))
 
 (after! writeroom
