@@ -314,6 +314,8 @@
   (setq lsp-keymap-prefix "C-c c")
   (setq lsp-auto-select-workspace nil)
   (setq lsp-auto-guess-root nil)
+  (setq lsp-clients-clangd-args
+        "-c ~/.clangd/clangd-config.yaml --header-insertion-decorators=0")
   (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
