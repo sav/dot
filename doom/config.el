@@ -87,10 +87,10 @@
         browse-url-chromium-program "my.xsel-browser"))
 
 (after! centaur-tabs
-  (setq centaur-tabs-adjust-buffer-order t
-        centaur-tabs-cycle-scope 'tabs
-        centaur-tabs-enable-key-bindings t
-        centaur-tabs-set-bar 'under))
+   (setq centaur-tabs-adjust-buffer-order t
+       centaur-tabs-cycle-scope 'tabs
+       centaur-tabs-enable-key-bindings t
+      centaur-tabs-set-bar 'under))
 
 (after! counsel
   (setq counsel-search-engine 'google))
@@ -647,7 +647,7 @@
         smtpmail-stream-type 'starttls))
 
 (after! tab-bar
-  (tab-bar-mode 1))
+  (tab-bar-mode t))
 
 (after! treemacs-all-the-icons
   (treemacs-load-theme 'all-the-icons))
