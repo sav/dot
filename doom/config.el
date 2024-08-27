@@ -60,6 +60,7 @@
       pop-up-frames nil
       save-abbrevs nil
       set-mark-command-repeat-pop t
+      delete-trailing-lines nil
       show-trailing-whitespace t
       tab-always-indent t
       vc-follow-symlinks t)
@@ -679,6 +680,10 @@
         writeroom-major-modes nil
         writeroom-mode-line t
         writeroom-width 120))
+
+(after! ws-butler
+  (ignore-errors
+    (unload-feature 'ws-butler)))
 
 (after! xwidget
   :config
