@@ -57,6 +57,7 @@
 (package! winner)
 (package! whitespace)
 (package! yaml-mode)
+(package! xcscope)
 
 ;;;
 ;;; $DOOMDIR/packages.el ends here
