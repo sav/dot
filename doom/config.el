@@ -35,17 +35,17 @@
         doom-font-weight-default
         (if (eq doom-theme-style 'dark)
             'regular
-          'medium))))
+          'regular))))
 
 (setq doom-leader-alt-key "C-c d")
 
 (setq doom-big-font-size 20
-      doom-font-default "Iosevka"
+      doom-font-default "Iosevka SS04"
       doom-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
       doom-big-font (font-spec :family doom-font-default :size doom-big-font-size :weight doom-font-weight-default)
       doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
       doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight-default)
-      doom-variable-pitch-font (font-spec :family "Gentium Book Plus" :size doom-font-size :weight doom-font-weight-default)
+      doom-variable-pitch-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
       +zen-text-scale 0)
 
 (setq confirm-kill-processes nil
