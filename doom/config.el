@@ -17,11 +17,11 @@
 (setq user-full-name "Savio Sena"
       user-mail-address "savio.sena@gmail.com")
 
-(setq doom-theme-style 'light)
+(setq doom-theme-style 'dark)
 
 (if (eq doom-theme-style 'dark)
-    (setq doom-theme 'doom-acario-dark)
-  (setq doom-theme 'doom-opera-light))
+    (setq doom-theme 'doom-badger)
+  (setq doom-theme 'modus-operandi))
 
 (cond
  ((string-equal system-name "tal.local")
@@ -64,6 +64,10 @@
       show-trailing-whitespace t
       tab-always-indent t
       vc-follow-symlinks t)
+
+(setq-default tab-width 8)
+(setq-default evil-shift-width 8)
+(setq-default indent-tabs-mode t)
 
 (after! alert
   (setq alert-default-style 'notifications))
@@ -249,6 +253,11 @@
 (after! flycheck
   (setq flycheck-error-list-minimum-level nil))
 
+(custom-set-faces!
+  '(flycheck-error ((t (:underline nil))))
+  '(flycheck-warning ((t (:underline nil))))
+  '(flycheck-info ((t (:underline nil)))))
+
 (after! google-translate
   (setq google-translate-default-source-language "pt"
         google-translate-default-target-language "en"))
@@ -309,6 +318,13 @@
   (map! :map ivy-minibuffer-map
         "C-<return>" #'ivy-immediate-done))
 
+(use-package! lsp-mode
+  :ensure t
+  :commands (lsp lsp-deferred)
+  :hook ((c-mode c++-mode objc-mode) . lsp-deferred)
+  :config
+  (setq lsp-clients-clangd-executable "/usr/bin/clangd"))
+
 (after! lsp
   (require 'lsp)
   (require 'lsp-rust)
@@ -317,6 +333,8 @@
   (setq lsp-auto-guess-root nil)
   (setq lsp-clients-clangd-args
         "-c ~/.clangd/clangd-config.yaml --header-insertion-decorators=0")
+  (set-lsp-priority! 'clangd 1)
+  (set-lsp-priority! 'ccls 0)
   (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
@@ -336,6 +354,13 @@
   (setq lsp-ui-doc-enable t)
   (setq lsp-ui-doc-mode t)
   (setq lsp-ui-flycheck-enable t)
+  ;; disable underlines for errors and warnings in lsp-mode
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-sideline-show-diagnostics nil)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-code-actions nil)
+  (setq lsp-ui-doc-enable nil)
+  ;; add initialization hooks
   (add-hook 'lsp-after-initialize-hook #'lsp-ui-mode)
   (add-hook 'lsp-ui-mode-hook #'lsp-ui-peek-mode)
   (add-hook 'lsp-ui-mode-hook #'lsp-ui-doc-mode))
