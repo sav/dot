@@ -197,6 +197,8 @@
 
 (map! "C-c o i" (lambda () (interactive) (my/org/open-plain "inbox")))
 
+(map! "C-c o j" (lambda () (interactive) (my/org/open "job")))
+
 (map! "C-c o k" (lambda () (interactive) (my/org/open "keyring")))
 
 (map! "C-c o l" (lambda () (interactive) (my/org/open "life")))
