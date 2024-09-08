@@ -333,6 +333,8 @@
   (setq lsp-auto-guess-root nil)
   (setq lsp-clients-clangd-args
         "-c ~/.clangd/clangd-config.yaml --header-insertion-decorators=0")
+  (setq lsp-clients-clangd-executable "/usr/bin/clangd")
+  (setq lsp-prefer-flymake nil)
   (set-lsp-priority! 'clangd 1)
   (set-lsp-priority! 'ccls 0)
   (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
