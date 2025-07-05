@@ -24,11 +24,11 @@
   (setq doom-theme 'modus-operandi))
 
 (cond
- ((string-equal system-name "tal.local")
+ ((string-equal system-name "keres.local")
   (if (eq doom-theme-style 'dark)
       (setq doom-font-size 16
-            doom-font-weight-default 'regular)
-    (setq doom-font-size 14
+            doom-font-weight-default 'medium)
+    (setq doom-font-size 16
           doom-font-weight-default 'medium)))
  (t
   (setq doom-font-size 16
