@@ -59,6 +59,12 @@
 (package! yaml-mode)
 (package! xcscope)
 
+;; Tentative
+(package! copilot)
+(package! gptel)
+;; (package! flutter)
+;; (package! dart-mode)
+
 ;;;
 ;;; $DOOMDIR/packages.el ends here
 ;;;
