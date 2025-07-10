@@ -18,6 +18,7 @@
 (package! counsel-notmuch)
 (package! counsel-projectile)
 (package! counsel-web)
+(package! dash)
 (package! eat)
 (package! elpher)
 (package! fzf)
@@ -32,7 +33,12 @@
 (package! i3wm-config-mode)
 (package! info+)
 (package! ivy)
+(package! lean4-mode
+  :recipe (:host github
+           :repo "leanprover-community/lean4-mode"
+           :files ("*.el" "data")))
 (package! lsp-ui)
+(package! magit)
 (package! mpdmacs)
 (package! mutt-mode)
 (package! notifications)
