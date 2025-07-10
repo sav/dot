@@ -96,10 +96,13 @@
         browse-url-chromium-program "my.xsel-browser"))
 
 (after! centaur-tabs
-   (setq centaur-tabs-adjust-buffer-order t
-       centaur-tabs-cycle-scope 'tabs
-       centaur-tabs-enable-key-bindings t
-      centaur-tabs-set-bar 'under))
+  (setq centaur-tabs-adjust-buffer-order t
+        centaur-tabs-cycle-scope 'tabs
+        centaur-tabs-enable-key-bindings t
+        centaur-tabs-set-bar 'under))
+
+(after! copilot
+  (require 'copilot))
 
 (after! counsel
   (setq counsel-search-engine 'google))
@@ -239,13 +242,13 @@
   (setq epg-pinentry-mode 'ask))
 
 (after! erc
- (setq erc-server "irc.libera.chat"
-       erc-nick "_sav"
-       erc-user "sav"
-       erc-user-full-name "sav"
-       erc-port 6697
-       erc-use-ssl t
-       erc-auth-source-mode t))
+  (setq erc-server "irc.libera.chat"
+        erc-nick "_sav"
+        erc-user "sav"
+        erc-user-full-name "sav"
+        erc-port 6697
+        erc-use-ssl t
+        erc-auth-source-mode t))
 
 (after! eshell
   (defalias 'e 'find-file)
@@ -275,6 +278,12 @@
 (after! google-translate
   (setq google-translate-default-source-language "pt"
         google-translate-default-target-language "en"))
+
+(after! gptel
+  (require 'gptel)
+  (require 'gptel-org)
+  (require 'gptel-anthropic)
+  (require 'gptel-gh))
 
 (after! hl-todo
   (setq hl-todo-keyword-faces
@@ -748,8 +757,8 @@
 (after! xwidget
   :config
   (setq xwidget-webkit-bookmark-jump-new-session t
-       xwidget-webkit-cookie-file (expand-file-name "~/.emacs-webkit-cookie")
-       xwidget-webkit-download-dir (expand-file-name "~/dl")))
+        xwidget-webkit-cookie-file (expand-file-name "~/.emacs-webkit-cookie")
+        xwidget-webkit-download-dir (expand-file-name "~/dl")))
 
 (use-package! xcscope
   :config
