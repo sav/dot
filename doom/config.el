@@ -46,6 +46,7 @@
       doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
       doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight-default)
       doom-variable-pitch-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
+      +doom-dashboard-enable nil
       +zen-text-scale 0)
 
 (setq confirm-kill-processes nil
