@@ -318,6 +318,9 @@
                       (mode . gnus-article-mode)))
           ("*starred*" (starred-name)) ("others" (not (starred-names))))))
 
+(after! iedit
+  (define-key iedit-mode-keymap (kbd "C-c i ;") 'iedit-mode))
+
 (after! image-dired
   (add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "C-<tab>") #'centaur-tabs-forward))))
 
