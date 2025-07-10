@@ -620,8 +620,8 @@
         org-superstar-remove-leading-stars nil
         org-superstar-todo-bullet-alist
         '(("TODO" . ?⛶)
-          ("DOING" . ?👷)
-          ("BLOCKED" . ?🛑)
+          ("DOING" . ?⸎)
+          ("BLOCKED" . ?⏰)
           ("HOLD" . ?☕)
           ("CANCELLED" . ?✘)
           ("DONE" . ?✔)
