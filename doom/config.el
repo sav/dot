@@ -233,6 +233,15 @@
   (require 'pinentry)
   (setq epg-pinentry-mode 'ask))
 
+(after! erc
+ (setq erc-server "irc.libera.chat"
+       erc-nick "_sav"
+       erc-user "sav"
+       erc-user-full-name "sav"
+       erc-port 6697
+       erc-use-ssl t
+       erc-auth-source-mode t))
+
 (after! eshell
   (defalias 'e 'find-file)
   (defalias 'ee 'find-file-other-window)
@@ -634,6 +643,19 @@
 
 (after! pushbullet
   (setq pushbullet-api-key (password-store-get "PushBullet/API_KEY")))
+
+(after! rcirc
+  (require 'gnutls)
+  (setq
+   rcirc-default-nick "_sav"
+   rcirc-default-user-name "sav"
+   rcirc-default-full-name "sav"
+   rcirc-authenticate-before-join t
+   rcirc-server-alist
+   '(("irc.libera.chat"
+      :port 6697
+      :encryption tls
+      :channels ("#tsar")))))
 
 (after! recentf
   (setq recentf-max-menu-items 50
