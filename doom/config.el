@@ -755,20 +755,6 @@
   :config
   (cscope-setup))
 
-;; Tentative
-
-(after! copilot
-  (require 'copilot))
-
-(after! gptel
-  (require 'gptel)
-  (require 'gptel-org)
-  (require 'gptel-anthropic)
-  (require 'gptel-gh))
-
-;; FIXME apparent compatibility issues between Emacs 29.x, Doom Emacs, and `ivy'.
-(add-hook 'emacs-startup-hook #'ivy-mode)
-
 ;;;
 ;;; $DOOMDIR/config.el ends here
 ;;;
