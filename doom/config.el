@@ -69,6 +69,10 @@
 (setq-default evil-shift-width 8)
 (setq-default indent-tabs-mode t)
 
+;;
+;; Packages Configuration
+;;
+
 (after! alert
   (setq alert-default-style 'notifications))
 
