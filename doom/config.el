@@ -804,6 +804,13 @@
 
 (add-hook! 'prog-mode-hook #'prettify-symbols-mode)
 
+(add-hook 'emacs-startup-hook #'(lambda ()
+                                  (global-company-mode)
+                                  (global-tree-sitter-mode)
+                                  (global-prettify-symbols-mode)
+                                  (vertico-mode)
+                                  (vertico-grid-mode)))
+
 ;;;
 ;;; $DOOMDIR/config.el ends here
 ;;;
