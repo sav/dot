@@ -131,7 +131,11 @@
 
 (map! "C-c w" #'clipboard-kill-ring-save)
 
+(map! "C-c x" #'(lambda () (interactive) (insert "×")))
+
 (map! "C-c y" #'clipboard-yank)
+
+(map! "C-c >" #'(lambda () (interactive) (insert "→")))
 
 (map! "C-c <left>" #'winner-undo)
 
@@ -217,6 +221,25 @@
 (map! "C-c r l" #'consult-bookmark)
 
 (map! "C-c r t" #'google-translate-smooth-translate)
+
+
+;; Prefix: C-c u
+
+(map! "C-c u a" #'(lambda () (interactive) (insert "α")))
+
+(map! "C-c u b" #'(lambda () (interactive) (insert "β")))
+
+(map! "C-c u g" #'(lambda () (interactive) (insert "γ")))
+
+(map! "C-c u l" #'(lambda () (interactive) (insert "λ")))
+
+(map! "C-c u o" #'(lambda () (interactive) (insert "ω")))
+
+(map! "C-c u t" #'(lambda () (interactive) (insert "θ")))
+
+(map! "C-c u ." #'(lambda () (interactive) (insert "×")))
+
+(map! "C-c u >" #'(lambda () (interactive) (insert "→")))
 
 
 ;; Prefix: C-x
