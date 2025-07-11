@@ -46,7 +46,10 @@
       doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
       doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight-default)
       doom-variable-pitch-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
-      +doom-dashboard-enable nil
+      doom-modeline-icon t
+      doom-modeline-major-mode-icon t
+      doom-modeline-lsp-icon t
+      doom-modeline-major-mode-color-icon t
       +zen-text-scale 0)
 
 (setq confirm-kill-processes nil
@@ -64,11 +67,17 @@
       delete-trailing-lines nil
       show-trailing-whitespace t
       tab-always-indent t
-      vc-follow-symlinks t)
+      vc-follow-symlinks t
+      prettify-symbols-alist '(("->" . ?→))
+      frame-title-format '("%n %b  --  %F")
+      focus-in-hook nil
+      focus-out-hook nil)
 
 (setq-default tab-width 8)
 (setq-default evil-shift-width 8)
 (setq-default indent-tabs-mode t)
+
+(blink-cursor-mode 1)
 
 ;;
 ;; Packages Configuration
@@ -242,6 +251,8 @@
   (setq epg-pinentry-mode 'ask))
 
 (after! erc
+  (require 'gnutls)
+  (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
   (setq erc-server "irc.libera.chat"
         erc-nick "_sav"
         erc-user "sav"
@@ -666,6 +677,7 @@
 
 (after! rcirc
   (require 'gnutls)
+  (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
   (setq
    rcirc-default-nick "_sav"
    rcirc-default-user-name "sav"
@@ -763,6 +775,12 @@
 (use-package! xcscope
   :config
   (cscope-setup))
+
+;;;
+;;; Hooks
+;;;
+
+(add-hook! 'prog-mode-hook #'prettify-symbols-mode)
 
 ;;;
 ;;; $DOOMDIR/config.el ends here

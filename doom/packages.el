@@ -35,8 +35,8 @@
 (package! ivy)
 (package! lean4-mode
   :recipe (:host github
-           :repo "leanprover-community/lean4-mode"
-           :files ("*.el" "data")))
+	   :repo "leanprover-community/lean4-mode"
+	   :files ("*.el" "data")))
 (package! lsp-ui)
 (package! magit)
 (package! mpdmacs)
