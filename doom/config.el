@@ -413,9 +413,6 @@
         read-mail-command 'mu4e
         send-mail-function 'smtpmail-send-it))
 
-(after! magit
-  (require 'magit-selection))
-
 (after! message
   (setq message-confirm-send t
         message-signature-insert-empty-line nil))
