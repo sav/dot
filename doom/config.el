@@ -627,14 +627,17 @@
            :empty-lines-after 2))))
 
 (after! org-gcal
+  ;; https://github.com/myuhe/org-gcal.el
   (require 'oauth2)
   (require 'org-gcal)
   (require 'auth-source)
+  (require 'alert)
+  (require 'request)
   (add-to-list 'oauth2-auto-additional-providers-alist
-             '(org-gcal
-               (authorize-url . "https://accounts.google.com/o/oauth2/auth")
-               (access-token-url . "https://oauth2.googleapis.com/token")
-               (scope . "https://www.googleapis.com/auth/calendar")))
+               '(org-gcal
+		 (authorize-url . "https://accounts.google.com/o/oauth2/auth")
+		 (access-token-url . "https://oauth2.googleapis.com/token")
+		 (scope . "https://www.googleapis.com/auth/calendar")))
   (setq
    org-gcal-client-id (auth-source-pick-first-password :host "google-calendar" :user "client-id")
    org-gcal-client-secret (auth-source-pick-first-password :host "google-calendar" :user "client-secret")
@@ -645,7 +648,8 @@
      ("vccoj5evoffjdf8qsiamcbal7o@group.calendar.google.com" . "~/org/gcal/appointments.org")
      ("u1l0ld6tp95c9um5inl91q853o@group.calendar.google.com" . "~/org/gcal/important.org")
      ("r0ob5ugb003qmltfsu2u2qn1ic@group.calendar.google.com" . "~/org/gcal/notes.org")
-     ("6vj2pugrfr7lfhfrsc9kjhgcg4@group.calendar.google.com" . "~/org/gcal/social.org"))))
+     ("6vj2pugrfr7lfhfrsc9kjhgcg4@group.calendar.google.com" . "~/org/gcal/social.org")))
+  (org-gcal-reload-client-id-secret))
 
 (after! org-notify
   (setq org-notify-max-notifications-per-run 1))
