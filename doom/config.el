@@ -629,6 +629,27 @@
            :jump-to-captured t
            :empty-lines-after 2))))
 
+(after! org-gcal
+  (require 'oauth2)
+  (require 'org-gcal)
+  (require 'auth-source)
+  (add-to-list 'oauth2-auto-additional-providers-alist
+             '(org-gcal
+               (authorize-url . "https://accounts.google.com/o/oauth2/auth")
+               (access-token-url . "https://oauth2.googleapis.com/token")
+               (scope . "https://www.googleapis.com/auth/calendar")))
+  (setq
+   org-gcal-client-id (auth-source-pick-first-password :host "google-calendar" :user "client-id")
+   org-gcal-client-secret (auth-source-pick-first-password :host "google-calendar" :user "client-secret")
+   org-gcal-file-alist
+   '(("savio.sena@gmail.com" . "~/org/gcal/default.org")
+     ("mnmfjjfria4n4rjg7euqa0dtk4@group.calendar.google.com" . "~/org/gcal/anniversaries.org")
+     ("8hpkdjoq4foso4475u3n0t86hc@group.calendar.google.com" . "~/org/gcal/annotations.org")
+     ("vccoj5evoffjdf8qsiamcbal7o@group.calendar.google.com" . "~/org/gcal/appointments.org")
+     ("u1l0ld6tp95c9um5inl91q853o@group.calendar.google.com" . "~/org/gcal/important.org")
+     ("r0ob5ugb003qmltfsu2u2qn1ic@group.calendar.google.com" . "~/org/gcal/notes.org")
+     ("6vj2pugrfr7lfhfrsc9kjhgcg4@group.calendar.google.com" . "~/org/gcal/social.org"))))
+
 (after! org-notify
   (setq org-notify-max-notifications-per-run 1))
 

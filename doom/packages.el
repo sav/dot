@@ -43,6 +43,7 @@
 (package! mutt-mode)
 (package! notifications)
 (package! oj)
+(package! org-gcal)
 (package! org-notify)
 (package! org-superstar)
 (package! org-tag-beautify)
