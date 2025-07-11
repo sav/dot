@@ -252,7 +252,7 @@
 
 (after! erc
   (require 'gnutls)
-  (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
+  (setq gnutls-log-level 1)             ;; XXX
   (setq erc-server "irc.libera.chat"
         erc-nick "_sav"
         erc-user "sav"
@@ -699,7 +699,7 @@
 
 (after! rcirc
   (require 'gnutls)
-  (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
+  ;; (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
   (setq
    rcirc-default-nick "_sav"
    rcirc-default-user-name "sav"
