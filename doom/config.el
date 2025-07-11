@@ -252,7 +252,6 @@
 
 (after! erc
   (require 'gnutls)
-  (setq gnutls-log-level 1)             ;; XXX
   (setq erc-server "irc.libera.chat"
         erc-nick "_sav"
         erc-user "sav"
