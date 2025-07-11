@@ -167,6 +167,15 @@ When argument FORCE-RECREATE is non-nill, kill current
     (when delete-other-windows
       (delete-other-windows))))
 
+(defun my/alarm (time)
+  "Schedule an alarm after TIME (a string like '2 hours', '30 minutes', '90 seconds')."
+  (interactive "sEnter delay (e.g. 2 hours, 30 minutes, 90 seconds): ")
+  (run-at-time time nil
+               (lambda ()
+                 (beep)
+                 (play-sound-file (expand-file-name "/home/sav/mus/audio/bell.wav") 70)
+                 (alert "Time is over!" :title "Alarm"))))
+
 ;;;
 ;;; $DOOMDIR/lib.el ends here
 ;;;
