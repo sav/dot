@@ -484,7 +484,11 @@
   (require 'org-notify)
   (require 'org-superstar)
   (setq org-adapt-indentation t
-        org-agenda-files '("life.org.gpg" "agenda.org.gpg")
+        org-agenda-files
+        '("life.org.gpg"
+          "agenda.org.gpg"
+          "todo.org.gpg"
+          "job.org.gpg")
         org-agenda-confirm-kill t
         org-agenda-remove-tags t
         org-agenda-show-inherited-tags 'always
