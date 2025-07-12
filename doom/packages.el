@@ -21,6 +21,7 @@
 (package! dash)
 (package! eat)
 (package! elpher)
+(package! flycheck)
 (package! fzf)
 (package! gcmh)
 (package! gdb-mi)
@@ -29,6 +30,7 @@
 (package! go-mode)
 (package! golint)
 (package! google-translate)
+(package! hover)
 (package! i3wm)
 (package! i3wm-config-mode)
 (package! info+)
@@ -37,7 +39,9 @@
   :recipe (:host github
 	   :repo "leanprover-community/lean4-mode"
 	   :files ("*.el" "data")))
+(package! lsp-dart)
 (package! lsp-ui)
+(package! lsp-treemacs)
 (package! magit)
 (package! mpdmacs)
 (package! mutt-mode)
