@@ -20,7 +20,7 @@
 (setq doom-theme-style 'dark)
 
 (if (eq doom-theme-style 'dark)
-    (setq doom-theme 'doom-badger)
+    (setq doom-theme 'doom-ayu-dark)
   (setq doom-theme 'modus-operandi))
 
 (cond
