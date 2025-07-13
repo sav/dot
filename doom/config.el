@@ -27,7 +27,7 @@
  ((string-equal system-name "keres.local")
   (if (eq doom-theme-style 'dark)
       (setq doom-font-size 16
-            doom-font-weight-default 'medium)
+            doom-font-weight-default 'regular)
     (setq doom-font-size 16
           doom-font-weight-default 'medium)))
  (t
