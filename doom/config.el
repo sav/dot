@@ -20,15 +20,15 @@
 (setq doom-theme-style 'dark)
 
 (if (eq doom-theme-style 'dark)
-    (setq doom-theme 'doom-ayu-dark)
+    (setq doom-theme 'doom-wilmersdorf)
   (setq doom-theme 'modus-operandi))
 
 (cond
  ((string-equal system-name "keres.local")
   (if (eq doom-theme-style 'dark)
-      (setq doom-font-size 16
+      (setq doom-font-size 15
             doom-font-weight-default 'regular)
-    (setq doom-font-size 16
+    (setq doom-font-size 15
           doom-font-weight-default 'medium)))
  (t
   (setq doom-font-size 16
@@ -37,12 +37,8 @@
             'regular
           'regular))))
 
-(setq doom-leader-alt-key "C-c d")
-
-(setq doom-big-font-size 20
-      doom-font-default "Iosevka SS04"
-      doom-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
-      doom-big-font (font-spec :family doom-font-default :size doom-big-font-size :weight doom-font-weight-default)
+(setq doom-font (font-spec :family "Iosevka SS15" :size doom-font-size :weight doom-font-weight-default)
+      doom-big-font (font-spec :family "Iosevka SS15" :size (+ doom-font-size 2) :weight doom-font-weight-default)
       doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
       doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight-default)
       doom-variable-pitch-font (font-spec :family doom-font-default :size doom-font-size :weight doom-font-weight-default)
@@ -50,6 +46,7 @@
       doom-modeline-major-mode-icon t
       doom-modeline-lsp-icon t
       doom-modeline-major-mode-color-icon t
+      doom-leader-alt-key "C-c d"
       +zen-text-scale 0)
 
 (setq confirm-kill-processes nil
@@ -90,7 +87,7 @@
   (add-hook 'after-init-hook #'all-the-icons-ivy-setup))
 
 (after! auth-source
-  (setq auth-sources '("~/.authinfo.gpg" "~/.netrc")))
+  (setq auth-sources '("~/.authinfo.gpg" "~/.netrc" "~/.netrc.gpg")))
 
 (after! bookmark
   (setq bookmark-bmenu-toggle-filenames nil
@@ -122,6 +119,11 @@
 (after! dired
   (add-hook 'dired-mode-hook (lambda () (local-unset-key (kbd "C-t"))))
   (add-hook 'dired-mode-hook (lambda () (dired-omit-mode 1))))
+
+(after! editorconfig
+  (require 'loadhist)
+  (require 'hi-lock)
+  (require 'ws-butler))
 
 (after! elfeed
   (setq elfeed-search-filter "@6-months-ago")
@@ -638,9 +640,9 @@
   (require 'request)
   (add-to-list 'oauth2-auto-additional-providers-alist
                '(org-gcal
-		 (authorize-url . "https://accounts.google.com/o/oauth2/auth")
-		 (access-token-url . "https://oauth2.googleapis.com/token")
-		 (scope . "https://www.googleapis.com/auth/calendar")))
+                 (authorize-url . "https://accounts.google.com/o/oauth2/auth")
+                 (access-token-url . "https://oauth2.googleapis.com/token")
+                 (scope . "https://www.googleapis.com/auth/calendar")))
   (setq
    org-gcal-client-id (auth-source-pick-first-password :host "google-calendar" :user "client-id")
    org-gcal-client-secret (auth-source-pick-first-password :host "google-calendar" :user "client-secret")
@@ -708,11 +710,20 @@
    rcirc-default-user-name "sav"
    rcirc-default-full-name "sav"
    rcirc-authenticate-before-join t
+   rcirc-authinfo
+   `(("irc.libera.chat" nickserv "_sav"
+      ,(auth-source-pick-first-password
+        :host "irc.libera.chat"
+        :user "_sav")))
    rcirc-server-alist
    '(("irc.libera.chat"
-      :port 6697
-      :encryption tls
-      :channels ("#tsar")))))
+      :port 6667
+      :user-name "sav"
+      :full-name "github.com/sav"
+      ;; :port 6697
+      ;; :encryption tls
+      ;; :channels ("#emacs" "#eev" "#lean")
+      :channels ("#eev" "#lean")))))
 
 (after! recentf
   (setq recentf-max-menu-items 50
@@ -757,6 +768,13 @@
 
 (after! treemacs-all-the-icons
   (treemacs-load-theme 'all-the-icons))
+
+(after! vertico
+  (setq completion-styles '(orderless flex)
+        completion-category-defaults nil)
+  (setq completion-category-overrides
+      '((file (styles partial-completion))   ; for file paths
+        (command (styles orderless)))))      ; for M-x)
 
 (after! vterm
   (add-hook 'vterm-exit-functions
@@ -811,6 +829,8 @@
                                   (global-company-mode)
                                   (global-tree-sitter-mode)
                                   (global-prettify-symbols-mode)
+                                  ;; (ivy-mode)
+                                  (which-key-mode)
                                   (vertico-mode)
                                   (vertico-grid-mode)))
 

@@ -37,8 +37,8 @@
 (package! ivy)
 (package! lean4-mode
   :recipe (:host github
-	   :repo "leanprover-community/lean4-mode"
-	   :files ("*.el" "data")))
+           :repo "leanprover-community/lean4-mode"
+           :files ("*.el" "data")))
 (package! lsp-dart)
 (package! lsp-ui)
 (package! lsp-treemacs)
@@ -53,7 +53,7 @@
 (package! org-tag-beautify)
 (package! parinfer)
 (package! pinentry)
-(package! pushbullet)
+;; (package! pushbullet)
 (package! rainbow-delimiters)
 (package! rainbow-mode)
 (package! rg)
