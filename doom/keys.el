@@ -235,11 +235,15 @@
 
 (map! "C-c u o" #'(lambda () (interactive) (insert "ω")))
 
+(map! "C-c u s" #'(lambda () (interactive) (insert "Σ")))
+
 (map! "C-c u t" #'(lambda () (interactive) (insert "θ")))
 
 (map! "C-c u ." #'(lambda () (interactive) (insert "×")))
 
 (map! "C-c u >" #'(lambda () (interactive) (insert "→")))
+
+(map! "C-c u &" #'(lambda () (interactive) (insert "∧")))
 
 
 ;; Prefix: C-x
@@ -308,11 +312,11 @@
 
 (map! "C-z n" #'tab-next)
 
-(map! "C-z C-n" #'tab-next)
+(map! "C-z C-n" #'tab-move)
 
 (map! "C-z p" #'tab-previous)
 
-(map! "C-z C-p" #'tab-previous)
+(map! "C-z C-p" #'(lambda () (interactive) (tab-move -1)))
 
 (map! "C-z l" #'tab-recent)
 
