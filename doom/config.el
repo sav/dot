@@ -819,6 +819,9 @@
   :config
   (cscope-setup))
 
+(use-package pushbullet
+  :load-path "~/my/src/pushbullet")
+
 ;;;
 ;;; Hooks
 ;;;
