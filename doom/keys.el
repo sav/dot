@@ -15,6 +15,8 @@
 
 (global-unset-key (kbd "C-'"))
 
+(global-unset-key (kbd "C-;"))
+
 (global-unset-key (kbd "M-z"))
 
 (global-unset-key (kbd "<f2>"))
@@ -63,9 +65,9 @@
 
 (map! "C-*" #'my/highlight)
 
-(map! "C-?" #'treemacs)
+;; (map! "C-?" #'treemacs)
 
-(map! "C-/" #'treemacs-select-window)
+(map! "C-/" #'+company/complete)
 
 (map! "C-<tab>" #'tab-next)
 
@@ -107,7 +109,7 @@
 
 ;; Prefix: C-M-
 
-(map! "C-M-/" (lambda () (interactive) (treemacs-select-window) (delete-window)))
+(map! "C-M-/" #'treemacs-select-window)
 
 (map! "C-M-?" #'treemacs-select-directory)
 
@@ -166,6 +168,10 @@
 
 
 ;; Prefix: C-c C-c
+
+(map! "C-c C-c l" #'org-store-link)
+
+(map! "C-c C-c C-l" #'org-store-link)
 
 (map! "C-c C-c o" #'browse-url-at-point)
 
@@ -310,13 +316,13 @@
 
 (map! "C-z C-0" #'tab-undo)
 
-(map! "C-z n" #'tab-next)
+(map! "C-z C-n" #'tab-next)
 
-(map! "C-z C-n" #'tab-move)
+(map! "C-z n" #'tab-move)
 
-(map! "C-z p" #'tab-previous)
+(map! "C-z C-p" #'tab-previous)
 
-(map! "C-z C-p" #'(lambda () (interactive) (tab-move -1)))
+(map! "C-z p" #'(lambda () (interactive) (tab-move -1)))
 
 (map! "C-z l" #'tab-recent)
 

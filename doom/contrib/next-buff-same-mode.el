@@ -24,7 +24,6 @@
   (my-change-buffer-same-major-mode 'previous-buffer))
 
 (global-set-key [remap next-buffer] 'my-next-buffer-same-major-mode)
-(global-set-key
- [remap previous-buffer] 'my-previous-buffer-same-major-mode)
+(global-set-key [remap previous-buffer] 'my-previous-buffer-same-major-mode)
 
 (provide 'next-buff-same-mode)
