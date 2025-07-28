@@ -20,16 +20,16 @@
 (setq doom-theme-style 'dark)
 
 (if (eq doom-theme-style 'dark)
-    (setq doom-theme 'doom-ayu-dark)
-  (setq doom-theme 'modus-operandi))
+    (setq doom-theme 'doom-badger)
+  (setq doom-theme 'doom-one-light))
 
 (cond
  ((string-equal system-name "keres.local")
   (if (eq doom-theme-style 'dark)
-      (setq doom-font-size 16
-            doom-font-weight-default 'regular)
-    (setq doom-font-size 16
-          doom-font-weight-default 'medium)))
+      (setq doom-font-size 14
+            doom-font-weight-default 'medium)
+    (setq doom-font-size 14
+          doom-font-weight-default 'semi-bold)))
  (t
   (setq doom-font-size 16
         doom-font-weight-default
@@ -41,7 +41,7 @@
       doom-big-font (font-spec :family "Iosevka SS15" :size (+ doom-font-size 2) :weight doom-font-weight-default)
       doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
       doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight-default)
-      doom-variable-pitch-font (font-spec :family "Sans" :size doom-font-size :weight doom-font-weight-default)
+      doom-variable-pitch-font (font-spec :family "Ubuntu Sans" :size (- doom-font-size 2)  :weight doom-font-weight-default)
       doom-modeline-icon t
       doom-modeline-major-mode-icon t
       doom-modeline-lsp-icon t
