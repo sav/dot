@@ -17,11 +17,11 @@
 (setq user-full-name "Savio Sena"
       user-mail-address "savio.sena@gmail.com")
 
-(setq doom-theme-style 'dark)
+(setq doom-theme-style 'light)
 
 (if (eq doom-theme-style 'dark)
     (setq doom-theme 'doom-badger)
-  (setq doom-theme 'doom-one-light))
+  (setq doom-theme 'doom-nord-light))
 
 (cond
  ((string-equal system-name "keres.local")
@@ -836,7 +836,6 @@
                                   (global-company-mode)
                                   (global-tree-sitter-mode)
                                   (global-prettify-symbols-mode)
-                                  ;; (ivy-mode)
                                   (which-key-mode)
                                   (vertico-mode)
                                   (vertico-grid-mode)))
@@ -844,5 +843,3 @@
 ;;;
 ;;; $DOOMDIR/config.el ends here
 ;;;
-
-;;; vim:ft=lisp:ts=2:sw=2:et:
