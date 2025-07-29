@@ -87,6 +87,7 @@
   (add-hook 'after-init-hook #'all-the-icons-ivy-setup))
 
 (after! auth-source
+  (auth-source-forget-all-cached)
   (setq authinfo-hide-elements nil)
   (setq auth-sources '("~/.authinfo.gpg" "~/.netrc" "~/.netrc.gpg")))
 
@@ -700,9 +701,6 @@
         projectile-mode-line-prefix " Proj")
   (define-key projectile-mode-map (kbd "C-c r p") #'projectile-command-map))
 
-(after! pushbullet
-  (setq pushbullet-api-key (password-store-get "PushBullet/API_KEY")))
-
 (after! rcirc
   (require 'gnutls)
   ;; (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
@@ -820,11 +818,12 @@
   :config
   (cscope-setup))
 
-(use-package pushbullet
+(use-package! pushbullet
   :load-path "~/my/src/pushbullet"
   :config
-  (setq pushbullet-token (auth-source-pick-first-password
-                          :host "pushbullet" :user "user-token")))
+  (setq pushbullet-token
+        (or (auth-source-pick-first-password :host "pushbullet.com" :user "savio.sena@gmail.com")
+            (password-store-get "PushBullet/savio.sena@gmail.com/API_KEY_V2"))))
 
 ;;;
 ;;; Hooks
