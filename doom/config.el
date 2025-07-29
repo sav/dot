@@ -821,7 +821,10 @@
   (cscope-setup))
 
 (use-package pushbullet
-  :load-path "~/my/src/pushbullet")
+  :load-path "~/my/src/pushbullet"
+  :config
+  (setq pushbullet-token (auth-source-pick-first-password
+                          :host "pushbullet" :user "user-token")))
 
 ;;;
 ;;; Hooks
