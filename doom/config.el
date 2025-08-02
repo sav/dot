@@ -884,6 +884,10 @@
 
 (add-hook! 'emacs-startup-hook #'(lambda () (message "Your Emacs is ready!")))
 
+(add-hook! 'kill-emacs-hook #'(lambda () (doom/save-session "~/.emacs-doom-session")))
+
+(add-hook! 'emacs-startup-hook #'(lambda () (doom/load-session "~/.emacs-doom-session")))
+
 ;;;
 ;;; $DOOMDIR/config.el ends here
 ;;;
