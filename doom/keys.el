@@ -226,6 +226,8 @@
 
 (map! "C-c r l" #'consult-bookmark)
 
+(map! "C-c r o" #'recentf-open)
+
 (map! "C-c r t" #'google-translate-smooth-translate)
 
 

@@ -60,6 +60,7 @@
 (package! rainbow-mode)
 (package! rg)
 (package! rust-mode)
+(package! session)
 (package! shfmt)
 (package! tab-bar)
 (package! telega)

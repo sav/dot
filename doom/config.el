@@ -108,6 +108,11 @@
         centaur-tabs-enable-key-bindings t
         centaur-tabs-set-bar 'under))
 
+(use-package! company
+  :demand t
+  :config
+  (global-company-mode))
+
 (after! copilot
   (require 'copilot))
 
@@ -728,10 +733,12 @@
       :channels ("#eev" "#lean")))))
 
 (after! recentf
-  (setq recentf-max-menu-items 50
+  (setq recentf-max-menu-items 200
         recentf-max-saved-items 2500
         recentf-mode 1
-        recentf-save-file (expand-file-name "~/.emacs-recentf")))
+        recentf-auto-cleanup 'never
+        recentf-save-file (expand-file-name "~/.emacs-recentf"))
+  (add-hook 'emacs-startup-hook 'recentf-mode))
 
 (after! rmail
   (setq rmail-confirm-expunge 'yes-or-no-p
@@ -750,7 +757,11 @@
   (add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c C-n") #'next-buffer))))
 
 (after! savehist
+  (add-to-list 'savehist-additional-variables 'buffer-name-history)
   (setq savehist-file (expand-file-name "~/.emacs-history")))
+
+(after! session
+  (add-hook 'emacs-startup-hook 'session-initialize))
 
 (after! smartparens
   (setq sp-autoinsert-pair nil))
@@ -768,6 +779,9 @@
 (after! tab-bar
   (tab-bar-mode t))
 
+(after! tree-sitter
+  (add-hook 'emacs-startup-hook 'global-tree-sitter-mode))
+
 (after! treemacs-all-the-icons
   (treemacs-load-theme 'all-the-icons))
 
@@ -775,8 +789,8 @@
   (setq completion-styles '(orderless flex)
         completion-category-defaults nil)
   (setq completion-category-overrides
-      '((file (styles partial-completion))   ; for file paths
-        (command (styles orderless)))))      ; for M-x)
+        '((file (styles partial-completion)) ; for file paths
+          (command (styles orderless)))))    ; for M-x
 
 (after! vterm
   (add-hook 'vterm-exit-functions
@@ -790,8 +804,11 @@
   (add-hook 'vterm-mode-hook
             (lambda () (local-set-key (kbd "C-S-v") #'term-paste))))
 
+(after! which-key-mode
+  (add-hook 'emacs-startup-hook 'which-key-mode))
+
 (after! winner
-  (winner-mode))
+  (add-hook 'emacs-startup-hook 'winner-mode))
 
 (after! writeroom
   (setq writeroom-extra-line-spacing nil
@@ -834,11 +851,14 @@
 (add-hook! 'prog-mode-hook #'prettify-symbols-mode)
 
 (add-hook 'emacs-startup-hook #'(lambda ()
-                                  (global-company-mode)
-                                  (global-tree-sitter-mode)
+                                  ;; (global-company-mode)
+                                  ;; (global-tree-sitter-mode)
                                   (global-prettify-symbols-mode)
-                                  (which-key-mode)
-                                  (winner-mode)
+                                  ;; (which-key-mode)
+                                  ;; (recentf-mode)
+                                  (save-place-mode)
+                                  (persp-mode)
+                                  (savehist-mode 1)
                                   (vertico-mode)
                                   (vertico-grid-mode)))
 
