@@ -128,7 +128,7 @@
   (require 'ws-butler))
 
 (after! elfeed
-  (setq elfeed-search-filter "@6-months-ago")
+  (setq elfeed-search-filter "@6-weeks-ago")
   (setq elfeed-search-title-max-width 90)
   (setq elfeed-search-title-min-width 40)
   (setq elfeed-summary-width 140)
@@ -244,7 +244,11 @@
           "https://www.zerodayinitiative.com/blog/?format=rss"
           "https://www.zerodayinitiative.com/rss/published/"
           "https://www.zerodayinitiative.com/rss/upcoming/"
-          "https://xairy.io/feed.xml")))
+          "https://xairy.io/feed.xml"))
+  (add-to-list 'display-buffer-alist
+               '("\\*elfeed-entry\\*"
+                 (display-buffer-reuse-window display-buffer-at-bottom)
+                 (window-height . 0.5))))
 
 (after! epa
   (setq epa-mail-aliases '(("savio.sena@acm.org")
