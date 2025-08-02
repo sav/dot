@@ -87,7 +87,6 @@
   (add-hook 'after-init-hook #'all-the-icons-ivy-setup))
 
 (after! auth-source
-  (auth-source-forget-all-cached)
   (setq authinfo-hide-elements nil)
   (setq auth-sources '("~/.authinfo.gpg" "~/.netrc" "~/.netrc.gpg")))
 
