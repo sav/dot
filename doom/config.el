@@ -838,6 +838,7 @@
                                   (global-tree-sitter-mode)
                                   (global-prettify-symbols-mode)
                                   (which-key-mode)
+                                  (winner-mode)
                                   (vertico-mode)
                                   (vertico-grid-mode)))
 
