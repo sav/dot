@@ -73,8 +73,8 @@
 (package! xcscope)
 
 ;; Tentative
-(package! copilot)
-(package! gptel)
+;; (package! copilot)
+;; (package! gptel)
 ;; (package! flutter)
 ;; (package! dart-mode)
 
