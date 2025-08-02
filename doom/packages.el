@@ -53,7 +53,9 @@
 (package! org-tag-beautify)
 (package! parinfer)
 (package! pinentry)
-;; (package! pushbullet)
+(package! pushbullet
+  :recipe (:host github
+           :repo "sav/emacs-pushbullet"))
 (package! rainbow-delimiters)
 (package! rainbow-mode)
 (package! rg)

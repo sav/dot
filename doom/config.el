@@ -822,12 +822,11 @@
   :config
   (cscope-setup))
 
+(after! pushbullet
+  (setq pushbullet-token (password-store-get "PushBullet/savio.sena@gmail.com/API_KEY_V2")))
+
 (use-package! pushbullet
-  :load-path "~/my/src/pushbullet"
-  :config
-  (setq pushbullet-token
-        (or (auth-source-pick-first-password :host "pushbullet.com" :user "savio.sena@gmail.com")
-            (password-store-get "PushBullet/savio.sena@gmail.com/API_KEY_V2"))))
+  :load-path "~/my/src/pushbullet")
 
 ;;;
 ;;; Hooks
