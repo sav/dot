@@ -821,6 +821,7 @@
   (vertico-grid-mode))
 
 (after! vterm
+  (setq vterm-shell "/usr/bin/zsh")
   (add-hook 'vterm-exit-functions
             (lambda (&optional buf _)
               (interactive)
