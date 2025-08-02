@@ -80,24 +80,29 @@
 ;; Packages Configuration
 ;;
 
-(after! alert
+(use-package! alert
+  :config
   (setq alert-default-style 'notifications))
 
-(after! all-the-icons-ivy
+(use-package! all-the-icons-ivy
+  :config
   (add-hook 'after-init-hook #'all-the-icons-ivy-setup))
 
-(after! auth-source
+(use-package! auth-source
+  :config
   (setq authinfo-hide-elements nil)
   (setq auth-sources '("~/.authinfo.gpg" "~/.netrc" "~/.netrc.gpg")))
 
-(after! bookmark
+(use-package! bookmark
+  :config
   (setq bookmark-bmenu-toggle-filenames nil
         bookmark-default-file (expand-file-name "~/.emacs-bookmarks.el")
         bookmark-menu-confirm-deletion t
         bookmark-menu-length 120
         bookmark-sort-flag t))
 
-(after! browse-url
+(use-package! browse-url
+  :config
   (setq browse-url-browser-function #'browse-url-default-browser
         browse-url-chrome-program "my.xsel-browser"
         browse-url-chromium-program "my.xsel-browser"))
@@ -113,13 +118,12 @@
   :config
   (global-company-mode))
 
-(after! copilot
-  (require 'copilot))
-
-(after! counsel
+(use-package! counsel
+  :config
   (setq counsel-search-engine 'google))
 
-(after! counsel-web
+(use-package! counsel-web
+  :config
   (setq counsel-web-search-action 'eww))
 
 (after! dired
@@ -128,8 +132,7 @@
 
 (after! editorconfig
   (require 'loadhist)
-  (require 'hi-lock)
-  (require 'ws-butler))
+  (require 'hi-lock))
 
 (after! elfeed
   (setq elfeed-search-filter "@6-weeks-ago")
@@ -281,7 +284,8 @@
   (setq eww-default-download-directory (expand-file-name "~/dl")
         eww-search-prefix "https://www.google.com/search?q="))
 
-(after! gcmh
+(use-package! gcmh
+  :config
   (gcmh-mode 1))
 
 (after! gdb
@@ -290,12 +294,11 @@
         gdb-show-main t))
 
 (after! flycheck
-  (setq flycheck-error-list-minimum-level nil))
-
-(custom-set-faces!
-  '(flycheck-error ((t (:underline nil))))
-  '(flycheck-warning ((t (:underline nil))))
-  '(flycheck-info ((t (:underline nil)))))
+  (setq flycheck-error-list-minimum-level nil)
+  (custom-set-faces!
+    '(flycheck-error ((t (:underline nil))))
+    '(flycheck-warning ((t (:underline nil))))
+    '(flycheck-info ((t (:underline nil))))))
 
 (after! google-translate
   (setq google-translate-default-source-language "pt"
@@ -354,15 +357,17 @@
                       (mode . gnus-article-mode)))
           ("*starred*" (starred-name)) ("others" (not (starred-names))))))
 
-(after! iedit
+(use-package! iedit
+  :config
   (define-key iedit-mode-keymap (kbd "C-c i ;") 'iedit-mode))
 
 (after! image-dired
   (add-hook 'dired-mode-hook (lambda () (local-set-key (kbd "C-<tab>") #'centaur-tabs-forward))))
 
-(after! info+)
+(use-package! info+)
 
-(after! ivy
+(use-package! ivy
+  :config
   (map! :map ivy-minibuffer-map
         "C-<return>" #'ivy-immediate-done))
 
@@ -374,7 +379,6 @@
   (setq lsp-clients-clangd-executable "/usr/bin/clangd"))
 
 (after! lsp
-  (require 'lsp)
   (require 'lsp-rust)
   (setq lsp-keymap-prefix "C-c c")
   (setq lsp-auto-select-workspace nil)
@@ -389,7 +393,6 @@
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
 (after! lsp-ui
-  (require 'lsp-ui)
   (require 'lsp-ui-peek)
   (setq lsp-ui-sideline-show-hover t)
   (setq lsp-ui-sideline-enable t)
@@ -482,7 +485,8 @@
 (after! notmuch
   (setq notmuch-init-file (expand-file-name "~/.notmuch-config")))
 
-(after! org
+(use-package! org
+  :config
   (require 'org-agenda)
   (require 'org-capture)
   (require 'org-clock)
@@ -585,7 +589,8 @@
         org-use-tag-inheritance nil)
   (add-hook 'org-mode-hook #'org-superstar-mode))
 
-(after! org-capture
+(use-package! org-capture
+  :config
   (setq org-capture-templates
         '(("l"
            "link"
@@ -641,8 +646,7 @@
            :jump-to-captured t
            :empty-lines-after 2))))
 
-(after! org-gcal
-  ;; https://github.com/myuhe/org-gcal.el
+(after! org-gcal ;; https://github.com/myuhe/org-gcal.el
   (require 'oauth2)
   (require 'org-gcal)
   (require 'auth-source)
@@ -666,10 +670,12 @@
      ("6vj2pugrfr7lfhfrsc9kjhgcg4@group.calendar.google.com" . "~/org/gcal/social.org")))
   (org-gcal-reload-client-id-secret))
 
-(after! org-notify
+(use-package! org-notify
+  :config
   (setq org-notify-max-notifications-per-run 1))
 
-(after! org-superstar
+(use-package! org-superstar
+  :config
   (setq org-superstar-item-bullet-alist '((?* . ?•) (?+ . ?◦) (?- . ?‣))
         org-superstar-special-todo-items t
         org-superstar-remove-leading-stars t
@@ -688,7 +694,8 @@
   (with-eval-after-load 'org-superstar
     (org-superstar-restart)))
 
-(after! parinfer
+(use-package! parinfer
+  :config
   (setq parinfer-extensions
         '(defaults
           pretty-parens
@@ -698,10 +705,19 @@
 (after! pass ;; https://jherrlin.github.io/posts/emacs-gnupg-and-pass/
   (setq epg-pinentry-mode 'loopback))
 
-(after! pinentry
+(use-package! persp-mode
+  :config
+  (persp-mode))
+
+(use-package! pinentry
+  :config
   (pinentry-start))
 
-(after! projectile
+(after! prog-mode
+  (global-prettify-symbols-mode))
+
+(use-package! projectile
+  :config
   (setq projectile-auto-discover nil
         projectile-default-src-directory (expand-file-name "~/src")
         projectile-dynamic-mode-line nil
@@ -711,7 +727,6 @@
 
 (after! rcirc
   (require 'gnutls)
-  ;; (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
   (setq
    rcirc-default-nick "_sav"
    rcirc-default-user-name "sav"
@@ -732,13 +747,14 @@
       ;; :channels ("#emacs" "#eev" "#lean")
       :channels ("#eev" "#lean")))))
 
-(after! recentf
+(use-package! recentf
+  :config
   (setq recentf-max-menu-items 200
         recentf-max-saved-items 2500
         recentf-mode 1
         recentf-auto-cleanup 'never
         recentf-save-file (expand-file-name "~/.emacs-recentf"))
-  (add-hook 'emacs-startup-hook 'recentf-mode))
+  (recentf-mode))
 
 (after! rmail
   (setq rmail-confirm-expunge 'yes-or-no-p
@@ -756,12 +772,19 @@
   (add-hook 'rust-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'rust-mode-hook (lambda () (local-set-key (kbd "C-c C-n") #'next-buffer))))
 
-(after! savehist
+(use-package! savehist
+  :config
   (add-to-list 'savehist-additional-variables 'buffer-name-history)
-  (setq savehist-file (expand-file-name "~/.emacs-history")))
+  (setq savehist-file (expand-file-name "~/.emacs-history"))
+  (savehist-mode 1))
 
-(after! session
-  (add-hook 'emacs-startup-hook 'session-initialize))
+(use-package! saveplace
+  :config
+  (save-place-mode))
+
+(use-package! session
+  :config
+  (session-initialize))
 
 (after! smartparens
   (setq sp-autoinsert-pair nil))
@@ -776,21 +799,26 @@
         smtpmail-store-queue-variables nil
         smtpmail-stream-type 'starttls))
 
-(after! tab-bar
+(use-package! tab-bar
+  :config
   (tab-bar-mode t))
 
-(after! tree-sitter
-  (add-hook 'emacs-startup-hook 'global-tree-sitter-mode))
+(use-package! tree-sitter
+  :config
+  (global-tree-sitter-mode))
 
 (after! treemacs-all-the-icons
   (treemacs-load-theme 'all-the-icons))
 
-(after! vertico
+(use-package! vertico
+  :config
   (setq completion-styles '(orderless flex)
         completion-category-defaults nil)
   (setq completion-category-overrides
         '((file (styles partial-completion)) ; for file paths
-          (command (styles orderless)))))    ; for M-x
+          (command (styles orderless))))     ; for M-x
+  (vertico-mode)
+  (vertico-grid-mode))
 
 (after! vterm
   (add-hook 'vterm-exit-functions
@@ -804,13 +832,16 @@
   (add-hook 'vterm-mode-hook
             (lambda () (local-set-key (kbd "C-S-v") #'term-paste))))
 
-(after! which-key-mode
-  (add-hook 'emacs-startup-hook 'which-key-mode))
+(use-package! which-key
+  :config
+  (which-key-mode))
 
-(after! winner
-  (add-hook 'emacs-startup-hook 'winner-mode))
+(use-package! winner
+  :config
+  (winner-mode))
 
-(after! writeroom
+(use-package! writeroom-mode
+  :config
   (setq writeroom-extra-line-spacing nil
         writeroom-fringes-outside-margins t
         writeroom-global-effects
@@ -822,7 +853,8 @@
         writeroom-header-line t
         writeroom-major-modes nil
         writeroom-mode-line t
-        writeroom-width 120))
+        writeroom-width 120)
+  (global-writeroom-mode))
 
 (after! ws-butler
   (ignore-errors
@@ -838,11 +870,10 @@
   :config
   (cscope-setup))
 
-(after! pushbullet
-  (setq pushbullet-token (password-store-get "PushBullet/savio.sena@gmail.com/API_KEY_V2")))
-
 (use-package! pushbullet
-  :load-path "~/my/src/pushbullet")
+  :load-path "~/my/src/pushbullet"
+  :config
+  (setq pushbullet-token (password-store-get "PushBullet/savio.sena@gmail.com/API_KEY_V2")))
 
 ;;;
 ;;; Hooks
@@ -850,17 +881,7 @@
 
 (add-hook! 'prog-mode-hook #'prettify-symbols-mode)
 
-(add-hook 'emacs-startup-hook #'(lambda ()
-                                  ;; (global-company-mode)
-                                  ;; (global-tree-sitter-mode)
-                                  (global-prettify-symbols-mode)
-                                  ;; (which-key-mode)
-                                  ;; (recentf-mode)
-                                  (save-place-mode)
-                                  (persp-mode)
-                                  (savehist-mode 1)
-                                  (vertico-mode)
-                                  (vertico-grid-mode)))
+(add-hook! 'emacs-startup-hook #'(lambda () (message "Your Emacs is ready!")))
 
 ;;;
 ;;; $DOOMDIR/config.el ends here
