@@ -65,9 +65,11 @@
   (interactive)
   (setq debug-on-error (not debug-on-error))
   (setq debug-on-signal debug-on-error)
-  (message (format "(debug) error: %s, signal %s"
-                   (if debug-on-error "ON" "OFF")
-                   (if debug-on-signal "ON" "OFF"))))
+  (message
+   (format
+    "(debug) error: %s, signal %s"
+    (if debug-on-error "ON" "OFF")
+    (if debug-on-signal "ON" "OFF"))))
 
 (defvar my/highlight/token nil)
 
@@ -77,9 +79,9 @@
   (if (not (equal my/highlight/token nil))
       (unhighlight-regexp my/highlight/token))
   (if (not (string-equal my/highlight/token (current-word)))
-      (progn
-        (setq my/highlight/token (current-word))
-        (highlight-regexp (current-word) 'hi-green-b))
+      (and
+       (setq my/highlight/token (current-word))
+       (highlight-regexp (current-word) 'hi-green-b))
     (setq my/highlight/token nil)))
 
 (defvar my/vterm/buffer-name "*doom:vterm-popup:main*")
@@ -93,15 +95,15 @@ a new window with it.
 If neither the window nor the buffer exists, initiate a new vterm instance and
 associate its buffer with BUFFER-NAME."
   (interactive)
-  (let* ((buffer (or buffer-name my/vterm/buffer-name))
-         (existing-window (get-buffer-window buffer)))
-    (if existing-window
-        (select-window existing-window)
+  (let*
+      ((buffer (or buffer-name my/vterm/buffer-name))
+       (existing-window (get-buffer-window buffer)))
+    (if existing-window (select-window existing-window)
       (if buffer
-          (if (get-buffer buffer)
-              (display-buffer buffer t)
-            (vterm buffer))
-        (+vterm/toggle)))))
+	  (if (get-buffer buffer)
+	      (display-buffer buffer t)
+	    (vterm buffer))
+	(+vterm/toggle)))))
 
 (defun my/tab/new ()
   "Open a new tab and focus Doom's Dashboard."
@@ -122,7 +124,8 @@ associate its buffer with BUFFER-NAME."
 
 (defun my/scratch/create-buffer ()
   "Dynamically create the scratch buffer content."
-  (format ";;; %s -- Interactive scratch -*- mode: text; -*-
+  (format
+   ";;; %s -- Interactive scratch -*- mode: text; -*-
 ;;;
 ;;; Commentary:
 ;;;   %s@%s.local is up for %s.
@@ -132,13 +135,13 @@ associate its buffer with BUFFER-NAME."
 ;;; Updated: %s
 ;;;
 ;;; Code:\n\n"
-          my/scratch/buffer-name
-          user-login-name
-          system-name
-          (my/uptime)
-          user-full-name
-          user-mail-address
-          (format-time-string "%b %d %Y")))
+   my/scratch/buffer-name
+   user-login-name
+   system-name
+   (my/uptime)
+   user-full-name
+   user-mail-address
+   (format-time-string "%b %d %Y")))
 
 (defun my/scratch/show
     (&optional delete-other-windows force-recreate)
@@ -149,14 +152,12 @@ When argument FORCE-RECREATE is non-nill, kill current
   (interactive)
   (when (and force-recreate (get-buffer my/scratch/buffer-name))
     (kill-buffer my/scratch/buffer-name))
-  (let* ((scratch-buffer-is-new
-          (unless (get-buffer my/scratch/buffer-name)
-            t))
-         (scratch-buffer (get-buffer-create my/scratch/buffer-name)))
+  (let*
+      ((scratch-buffer-is-new (unless (get-buffer my/scratch/buffer-name) t))
+       (scratch-buffer (get-buffer-create my/scratch/buffer-name)))
     (switch-to-buffer scratch-buffer)
     (with-current-buffer scratch-buffer
-      (when scratch-buffer-is-new
-        (insert (my/scratch/create-buffer)))
+      (when scratch-buffer-is-new (insert (my/scratch/create-buffer)))
       ;; (lisp-interaction-mode)
       (text-mode)
       ;; (flycheck-mode -1)
@@ -170,11 +171,45 @@ When argument FORCE-RECREATE is non-nill, kill current
 (defun my/alarm (time)
   "Schedule an alarm after TIME (a string like '2 hours', '30 minutes', '90 seconds')."
   (interactive "sEnter delay (e.g. 2 hours, 30 minutes, 90 seconds): ")
-  (run-at-time time nil
-               (lambda ()
-                 (beep)
-                 (play-sound-file (expand-file-name "/home/sav/mus/audio/bell.wav") 70)
-                 (alert "Time is over!" :title "Alarm"))))
+  (run-at-time
+   time nil
+   (lambda ()
+     (beep)
+     (play-sound-file (expand-file-name "/home/sav/mus/audio/bell.wav") 70)
+     (alert "Time is over!" :title "Alarm"))))
+
+(defun my/auth-source-flush ()
+ "Flush and clear cached authentication sources.
+
+This function ensures that Emacs forgets any cached auth-source passwords
+and re-enables `epa-file-mode` to handle GPG-encrypted files."
+ (require 'epa)
+ (epa-file-enable)
+ (save-window-excursion
+   (mapc
+    (lambda (f)
+      (kill-buffer (find-file f)))
+    auth-sources))
+ (auth-source-forget+)
+ (auth-source-forget-all-cached))
+
+(defun my/auth-source-password (host &optional login once)
+ "Retrieve password from auth-source for HOST and optional LOGIN.
+Signals `user-error' if password not found."
+ (let
+     ((password (if login
+		    (auth-source-pick-first-password :host host :login login)
+		  (auth-source-pick-first-password :host host))))
+   (unless password
+     (setq password (if (not once)
+			(my/auth-source-flush)
+		      (my/auth-source-password host login t))))
+   (unless password
+     (user-error
+      "my/password-by-host: password not found: %s%s"
+      (if login (format "%s@" login) "")
+      host))
+   password))
 
 ;;;
 ;;; $DOOMDIR/lib.el ends here

@@ -14,14 +14,17 @@
 (package! all-the-icons-ivy)
 (package! bookmark+)
 (package! cargo-mode)
+(package! copilot)
 (package! counsel)
 (package! counsel-notmuch)
 (package! counsel-projectile)
 (package! counsel-web)
+(package! dart-mode)
 (package! dash)
 (package! eat)
 (package! elpher)
 (package! flycheck)
+(package! flutter)
 (package! fzf)
 (package! gcmh)
 (package! gdb-mi)
@@ -30,15 +33,17 @@
 (package! go-mode)
 (package! golint)
 (package! google-translate)
+(package! gptel)
 (package! hover)
 (package! i3wm)
 (package! i3wm-config-mode)
 (package! info+)
 (package! ivy)
 (package! lean4-mode
-  :recipe (:host github
-           :repo "leanprover-community/lean4-mode"
-           :files ("*.el" "data")))
+  :recipe
+  (:host github
+   :repo "leanprover-community/lean4-mode"
+   :files ("*.el" "data")))
 (package! lsp-dart)
 (package! lsp-ui)
 (package! lsp-treemacs)
@@ -55,13 +60,14 @@
 (package! parinfer)
 (package! pinentry)
 (package! pushbullet
-  :recipe (:host github
-           :repo "sav/emacs-pushbullet"))
+  :recipe
+  (:host github
+   :repo "sav/emacs-pushbullet"))
 (package! rainbow-delimiters)
+(package! rainbow-identifiers)
 (package! rainbow-mode)
 (package! rg)
 (package! rust-mode)
-(package! session)
 (package! shfmt)
 (package! tab-bar)
 (package! telega)
@@ -73,12 +79,6 @@
 (package! whitespace)
 (package! yaml-mode)
 (package! xcscope)
-
-;; Tentative
-;; (package! copilot)
-;; (package! gptel)
-;; (package! flutter)
-;; (package! dart-mode)
 
 ;;;
 ;;; $DOOMDIR/packages.el ends here
