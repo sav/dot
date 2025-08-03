@@ -121,6 +121,8 @@
 
 ;; Prefix: C-c
 
+(map! "C-c e" #'iedit-mode)
+
 (map! "C-c F" #'toggle-frame-fullscreen)
 
 (map! "C-c N" #'goto-line)
@@ -161,6 +163,8 @@
 
 
 ;; Prefix: C-c C-
+
+(map! "C-c C-e" #'iedit-mode)
 
 (map! "C-c C-n" #'next-buffer)
 
