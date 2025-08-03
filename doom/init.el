@@ -1,5 +1,7 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+(load-file (format "%s/early.el" doom-user-dir))
+
 (doom! :input
        ;;bidi                 ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
