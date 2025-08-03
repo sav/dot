@@ -262,6 +262,8 @@
 
 ;; Prefix: C-x
 
+(map! "C-x b" #'consult-buffer)
+
 (map! "C-x B" #'consult-buffer)
 
 (map! "C-x k" #'my/buffer/kill)
