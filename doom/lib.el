@@ -128,7 +128,7 @@ associate its buffer with BUFFER-NAME."
    ";;; %s -- Interactive scratch -*- mode: text; -*-
 ;;;
 ;;; Commentary:
-;;;   %s@%s.local is up for %s.
+;;;   %s@%s is up for %s.
 ;;;
 ;;; Author: %s
 ;;; Email: %s
