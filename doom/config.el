@@ -152,12 +152,13 @@
   (require 'loadhist)
   (require 'hi-lock))
 
-(after! elfeed
-  (setq elfeed-search-filter "@6-weeks-ago")
-  (setq elfeed-search-title-max-width 90)
-  (setq elfeed-search-title-min-width 40)
-  (setq elfeed-summary-width 140)
+(use-package! elfeed
+  :config
   (setq
+   elfeed-search-filter "@6-weeks-ago"
+   elfeed-search-title-max-width 90
+   elfeed-search-title-min-width 40
+   elfeed-summary-width 140
    elfeed-feeds
    '("https://without.boats/index.xml"
      "https://smallcultfollowing.com/babysteps/index.xml"
@@ -271,11 +272,8 @@
      "https://www.zerodayinitiative.com/rss/published/"
      "https://www.zerodayinitiative.com/rss/upcoming/"
      "https://xairy.io/feed.xml"))
-  (add-to-list
-   'display-buffer-alist
-   '("\\*elfeed-entry\\*"
-     (display-buffer-reuse-window display-buffer-at-bottom)
-     (window-height . 0.5))))
+  (elfeed)
+  (elfeed-update))
 
 (after! epa
   :config
