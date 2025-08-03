@@ -18,7 +18,7 @@
        :ui
        deft                      ; notational velocity for Emacs
        doom                      ; what makes DOOM look the way it does
-       (doom-dashboard +icons)   ; a nifty splash screen for Emacs
+       (doom-dashboard +icons +zen)   ; a nifty splash screen for Emacs
        doom-quit                 ; DOOM quit-message prompts when you quit Emacs
        (emoji +unicode)          ; 🙂
        hl-todo                ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
@@ -132,7 +132,7 @@
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       json    ; At least it ain't XML
+       json                ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
