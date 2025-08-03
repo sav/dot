@@ -43,6 +43,7 @@
 (package! lsp-ui)
 (package! lsp-treemacs)
 (package! magit)
+(package! marginalia)
 (package! mpdmacs)
 (package! mutt-mode)
 (package! notifications)
