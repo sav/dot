@@ -1,4 +1,4 @@
-;;; early-init.el -*- lexical-binding: t; -*-
+;;; early.el -*- lexical-binding: t; -*-
 
 ;; (require 'backtrace)
 
