@@ -18,7 +18,7 @@
  user-full-name "Savio Sena"
  user-mail-address "savio.sena@gmail.com")
 
-(setq doom-theme-style 'light)
+(load-file "~/.doom.el")
 
 (if (eq doom-theme-style 'dark)
     (setq doom-theme 'doom-badger)
