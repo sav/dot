@@ -319,7 +319,7 @@
   (require 'gptel-anthropic)
   (require 'gptel-gh)
   (setq
-   gptel-api-key (+pass-get-entry "Anthropic/savio.sena@gmail.com/KEYS/emacs")
+   gptel-api-key (my/auth-source-password "anthropic")
    ggptel-backend
    (gptel-make-anthropic "Claude"
      :stream t
