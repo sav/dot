@@ -795,8 +795,7 @@
       :full-name "github.com/sav"
       ;; :port 6697
       ;; :encryption tls
-      :channels ("#tsar" "#eev" "#lean" "#emacs"))))
-  (rcirc nil))
+      :channels ("#tsar" "#eev" "#lean" "#emacs")))))
 
 (use-package! recentf
   :config
@@ -853,11 +852,7 @@
   :config
   (tab-bar-mode t))
 
-(use-package! telega
-  :config
-  (setq telega-symbol-unread "🄌")
-  (save-window-excursion
-    (telega)))
+(use-package! telega)
 
 (use-package! tree-sitter
   :config
