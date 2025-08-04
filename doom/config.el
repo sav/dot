@@ -264,8 +264,7 @@
   (require 'epg)
   (require 'pinentry)
   (setq
-   ;; epg-pinentry-mode 'ask
-   epg-pinentry-mode 'loopback
+   epg-pinentry-mode 'ask
    epa-mail-aliases
    '(("savio.sena@gmail.com")
      ("savio.sena@acm.org")))
