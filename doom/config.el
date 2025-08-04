@@ -774,12 +774,12 @@
    rcirc-authinfo '(("irc.libera.chat" nickserv "_sav" libera-chat-password))
    rcirc-server-alist
    '(("irc.libera.chat"
-      :port 6667
       :nick "_sav"
       :user-name "sav"
       :full-name "github.com/sav"
-      ;; :port 6697
-      ;; :encryption tls
+      ;; :port 6667
+      :port 6697
+      :encryption tls
       :channels ("#tsar" "#eev" "#lean" "#emacs")))))
 
 (use-package! recentf
