@@ -21,7 +21,7 @@
 (load-file "~/.doom.el")
 
 (if (eq doom-theme-style 'dark)
-    (setq doom-theme 'doom-badger)
+    (setq doom-theme 'seti)
   (setq doom-theme 'doom-nord-light))
 
 (cond
@@ -51,8 +51,6 @@
  doom-modeline-major-mode-icon t
  doom-modeline-lsp-icon t
  doom-modeline-major-mode-color-icon t
- doom-leader-key "C-c C-d"
- doom-leader-alt-key "C-c d"
  +zen-text-scale 0)
 
 (setq

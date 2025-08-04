@@ -68,6 +68,7 @@
 (package! rainbow-mode)
 (package! rg)
 (package! rust-mode)
+(package! seti-theme)
 (package! shfmt)
 (package! tab-bar)
 (package! telega)
