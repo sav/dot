@@ -66,6 +66,7 @@
  indent-tabs-mode t)
 
 (blink-cursor-mode)
+(doom-modeline-mode)
 
 ;;
 ;; Packages Configuration
