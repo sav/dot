@@ -800,8 +800,8 @@
 (use-package! recentf
   :config
   (setq
-   recentf-max-menu-items 200
-   recentf-max-saved-items 2500
+   recentf-max-menu-items 2500
+   recentf-max-saved-items 5000
    recentf-mode 1
    recentf-auto-cleanup 'never
    recentf-save-file (expand-file-name "~/.emacs-recentf"))
