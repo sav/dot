@@ -1,4 +1,4 @@
-;;; ../my/src/dot/doom/vars.el -*- lexical-binding: t; -*-
+;;; vars.el -*- lexical-binding: t; -*-
 
 (defvar doom-theme-style 'dark
   "Controls the style of Emacs themes.
