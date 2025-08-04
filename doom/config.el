@@ -854,8 +854,8 @@
    completion-category-defaults nil)
   (setq
    completion-category-overrides
-   '((file (styles partial-completion))	 ; for file paths
-     (command (styles orderless))))     ; for M-x
+   '((file (styles partial-completion))
+     (command (styles orderless))))
   (vertico-mode)
   (vertico-grid-mode))
 
