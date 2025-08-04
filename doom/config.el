@@ -21,7 +21,7 @@
 (load-file "~/.doom.el")
 
 (if (eq doom-theme-style 'dark)
-    (setq doom-theme 'seti)
+    (setq doom-theme 'wombat)
   (setq doom-theme 'doom-nord-light))
 
 (cond
@@ -964,7 +964,22 @@
     '(tab-bar :inherit mode-line)
     '(tab-bar-tab :inherit mode-line-buffer-id)
     '(tab-bar-tab-inactive :inherit mode-line-inactive)
-    '(mode-line :background "#1c1f24" :foreground "#bbc2cf" :box nil)))
+    '(font-lock-builtin-face :foreground "SlateGray4" :background nil :underline nil :inherti default)
+    '(font-lock-comment-face :foreground "grey30" :background nil :underline nil :inherit default)
+    '(font-lock-constant-face :foreground "grey70" :background nil :underline nil :inherit default)
+    '(font-lock-doc-face :foreground "grey30" :background nil :underline nil :inherti default)
+    '(font-lock-function-name-face :foreground "LightSteelBlue3" :background nil :underline nil :inherti default)
+    '(font-lock-keyword-face :foreground "white" :background nil :underline nil :inherti default)
+    '(font-lock-preprocessor-face :foreground nil :background nil :underline nil :inherti default)
+    '(font-lock-string-face :foreground "gray50" :background nil :underline nil :slant oblique :inherti default)
+    '(font-lock-type-face :foreground "LightCyan3" :background nil :underline nil :inherti default)
+    '(font-lock-variable-name-face :foreground "azure4" :background nil :underline nil :inherti default)
+    '(font-lock-warning-face :foreground "tan" :background nil :underline nil :inherti default)
+    ;; '(font-lock-doc-markup-face :foreground nil :background nil :underline nil :inherit default)
+    ;; '(font-lock-function-call-face :foreground nil :background nil :underline nil :inherti default)
+    ;; '(font-lock-property-name-face :foreground nil :background nil :underline nil :inherti default)
+    ;; '(font-lock-regexp-face :foreground nil :background nil :underline nil :inherti default)
+    '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face)))
 
 ;;;
 ;;; $DOOMDIR/config.el ends here
