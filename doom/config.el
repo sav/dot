@@ -896,7 +896,8 @@
    writeroom-header-line t
    writeroom-major-modes nil
    writeroom-mode-line t
-   writeroom-width 120)
+   writeroom-border-width 0
+   writeroom-width 180)
   (global-writeroom-mode))
 
 (after! ws-butler
