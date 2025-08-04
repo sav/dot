@@ -960,5 +960,17 @@
      (message "╰─● my-emacs::kill-emacs-hook → returned")))
 
 ;;;
+;;; Faces
+;;;
+
+(when (eq doom-theme-style 'dark)
+  (custom-set-faces!
+    '(highlight :inherit (mode-line-highlight mode-line-buffer-id) :background nil)
+    '(tab-bar :inherit mode-line)
+    '(tab-bar-tab :inherit mode-line-buffer-id)
+    '(tab-bar-tab-inactive :inherit mode-line-inactive)
+    '(mode-line :background "#1c1f24" :foreground "#bbc2cf" :box nil)))
+
+;;;
 ;;; $DOOMDIR/config.el ends here
 ;;;
