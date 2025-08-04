@@ -8,7 +8,7 @@
 ;;;
 ;;; Code:
 
-(load! "next-buff-same-mode.el")
+(load! "contrib/next-buff-same-mode.el")
 
 ;;;
 ;;; $DOOMDIR/contrib/init.el ends here

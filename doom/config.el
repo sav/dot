@@ -10,43 +10,25 @@
 ;;;
 ;;; Code:
 
+(load! "vars.el")
 (load! "lib.el")
 (load! "keys.el")
-(load! "contrib/init.el")
+(load! "contrib.el")
+
+(load! "~/.doom.el")
 
 (setq
- user-full-name "Savio Sena"
- user-mail-address "savio.sena@gmail.com")
-
-(load-file "~/.doom.el")
-
-(if (eq doom-theme-style 'dark)
-    (setq doom-theme 'wombat)
-  (setq doom-theme 'doom-nord-light))
-
-(cond
- ((string-equal system-name "keres.local")
-  (if (eq doom-theme-style 'dark)
-      (setq
-       doom-font-size 14
-       doom-font-weight-default 'medium)
-    (setq
-     doom-font-size 14
-     doom-font-weight-default 'semi-bold)))
- (t
-  (setq
-   doom-font-size 16
-   doom-font-weight-default
-   (if (eq doom-theme-style 'dark)
-       'regular
-     'regular))))
+ doom-theme
+ (cond
+  ((eq doom-theme-style 'dark) 'seti)
+  ((eq doom-theme-style 'light) 'doom-nord-light)))
 
 (setq
- doom-font (font-spec :family "Iosevka SS15" :size doom-font-size :weight doom-font-weight-default)
- doom-big-font (font-spec :family "Iosevka SS15" :size (+ doom-font-size 2) :weight doom-font-weight-default)
- doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight-default)
- doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight-default)
- doom-variable-pitch-font (font-spec :family "Ubuntu Sans" :size (- doom-font-size 2)  :weight doom-font-weight-default)
+ doom-font (font-spec :family doom-font-family :size doom-font-size :weight doom-font-weight)
+ doom-big-font (font-spec :family doom-font-family :size (+ doom-font-size 2) :weight doom-font-weight)
+ doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight)
+ doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight)
+ doom-variable-pitch-font (font-spec :family "Ubuntu Sans" :size (- doom-font-size 2)  :weight doom-font-weight)
  doom-modeline-icon t
  doom-modeline-major-mode-icon t
  doom-modeline-lsp-icon t
@@ -54,6 +36,8 @@
  +zen-text-scale 0)
 
 (setq
+ user-full-name "Savio Sena"
+ user-mail-address "savio.sena@gmail.com"
  confirm-kill-processes nil
  line-number-mode t
  column-number-mode t
@@ -270,20 +254,21 @@
      "https://www.zerodayinitiative.com/rss/published/"
      "https://www.zerodayinitiative.com/rss/upcoming/"
      "https://xairy.io/feed.xml"))
-  (elfeed)
-  (elfeed-update))
+  (save-window-excursion
+    (elfeed)
+    (elfeed-update)))
 
 (after! epa
   :config
   (require 'epg)
   (require 'pinentry)
   (setq
+   ;; epg-pinentry-mode 'ask
    epg-pinentry-mode 'loopback
    epa-mail-aliases
    '(("savio.sena@gmail.com")
      ("savio.sena@acm.org")))
-  (pinentry-start)
-  (setq epg-pinentry-mode 'ask))
+  (pinentry-start))
 
 (after! erc
   (require 'gnutls)
