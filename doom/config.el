@@ -926,6 +926,8 @@
 
 (add-hook! 'prog-mode-hook #'prettify-symbols-mode)
 
+(add-hook! 'prog-mode-hook #'treemacs-tag-follow-mode)
+
 (add-hook!
  'emacs-startup-hook
  #'(lambda ()
