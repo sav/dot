@@ -39,6 +39,7 @@
  user-full-name "Savio Sena"
  user-mail-address "savio.sena@gmail.com"
  confirm-kill-processes nil
+ confirm-kill-emacs nil
  line-number-mode t
  column-number-mode t
  cursor-in-non-selected-windows 'hollow
