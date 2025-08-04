@@ -1,5 +1,7 @@
 ;;; early.el -*- lexical-binding: t; -*-
 
+(message "╭─● my-emacs::early-init → called")
+
 ;; (require 'backtrace)
 
 ;; (setq debug-on-error t)
@@ -20,7 +22,4 @@
 ;; (advice-add 'file-read-string :before #'my-debug)
 ;; (advice-add 'find-file :before #'my-debug)
 
-(message "╭─● my-emacs::early-init → called")
-(require 'epa)
-(epa-file-enable)
 (message "╰─● my-emacs::early-init → returned")
