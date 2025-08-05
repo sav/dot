@@ -22,6 +22,7 @@
 (package! dart-mode)
 (package! dash)
 (package! eat)
+(package! eev)
 (package! elpher)
 (package! flycheck)
 (package! flutter)
