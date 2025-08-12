@@ -26,9 +26,9 @@
 (setq
  doom-font (font-spec :family doom-font-family :size doom-font-size :weight doom-font-weight)
  doom-big-font (font-spec :family doom-font-family :size (+ doom-font-size 2) :weight doom-font-weight)
- doom-serif-font (font-spec :family "Iosevka Slab" :size doom-font-size :weight doom-font-weight)
- doom-symbol-font (font-spec :family "FontAwesome" :size doom-font-size :weight doom-font-weight)
- doom-variable-pitch-font (font-spec :family "Ubuntu Sans" :size (- doom-font-size 2)  :weight doom-font-weight)
+ doom-serif-font (font-spec :family doom-serif-font-family :size doom-font-size :weight doom-font-weight)
+ doom-symbol-font (font-spec :family doom-symbol-font-family :size doom-font-size :weight doom-font-weight)
+ doom-variable-pitch-font (font-spec :family doom-variable-pitch-font-family :size (+ doom-font-size 4) :weight doom-font-weight)
  doom-modeline-icon t
  doom-modeline-major-mode-icon t
  doom-modeline-lsp-icon t
