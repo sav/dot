@@ -577,6 +577,8 @@
    org-todo-keywords
    '((sequence
       "TODO(t!)"
+      "URGE(u!)"
+      "PLAN(p!)"
       "DOIN(s@/!)"
       "BLOCKED(b@/!)"
       "HOLD(h@/!)"
@@ -590,7 +592,20 @@
       "OVERDUE(o!)"
       "DROP(D@/!)"))
    org-todo-keyword-faces
-   '(("TODO" :foreground "#445ca7" :weight bold :height 0.9)
+   '(("TODO"
+      :foreground "#445ca7"
+      :weight bold
+      :height 0.9)
+     ("URGE"
+      :background "gold2"
+      :foreground "tan3"
+      :weight bold
+      :height 0.9)
+     ("PLAN"
+      :foreground "azure4"
+      :slant oblique
+      :weight regular
+      :height 0.9)
      ("DOIN"
       :background "#2c81e9"
       :foreground "white"
