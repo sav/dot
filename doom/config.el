@@ -964,6 +964,7 @@
 
 (when (eq doom-theme-style 'dark)
   (custom-set-faces!
+    '(default :background "#090909" :foreground "#d8d8d8")
     '(highlight :inherit (mode-line-highlight mode-line-buffer-id) :background nil)
     '(tab-bar :inherit mode-line)
     '(tab-bar-tab :inherit mode-line-buffer-id)
