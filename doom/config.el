@@ -255,10 +255,7 @@
      "https://www.zerodayinitiative.com/blog/?format=rss"
      "https://www.zerodayinitiative.com/rss/published/"
      "https://www.zerodayinitiative.com/rss/upcoming/"
-     "https://xairy.io/feed.xml"))
-  (save-window-excursion
-    (elfeed)
-    (elfeed-update)))
+     "https://xairy.io/feed.xml")))
 
 (after! epa
   :config
