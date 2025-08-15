@@ -211,6 +211,13 @@ Signals `user-error' if password not found."
       host))
    password))
 
+(defun my/byte-recompile-directory (dir)
+  "Recursively `byte-compile` all `.el` files in DIR and subdirectories."
+  (interactive "DDirectory: ")
+  (dolist (file (directory-files-recursively dir "^.*\\.el\\(\\.gz\\)?$"))
+   (message "Compiling %s" file)
+   (byte-recompile-file file)))
+
 ;;;
 ;;; $DOOMDIR/lib.el ends here
 ;;;
