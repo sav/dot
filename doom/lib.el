@@ -100,10 +100,10 @@ associate its buffer with BUFFER-NAME."
        (existing-window (get-buffer-window buffer)))
     (if existing-window (select-window existing-window)
       (if buffer
-	  (if (get-buffer buffer)
-	      (display-buffer buffer t)
-	    (vterm buffer))
-	(+vterm/toggle)))))
+          (if (get-buffer buffer)
+              (display-buffer buffer t)
+            (vterm buffer))
+        (+vterm/toggle)))))
 
 (defun my/tab/new ()
   "Open a new tab and focus Doom's Dashboard."
@@ -198,12 +198,12 @@ and re-enables `epa-file-mode` to handle GPG-encrypted files."
 Signals `user-error' if password not found."
  (let
      ((password (if login
-		    (auth-source-pick-first-password :host host :login login)
-		  (auth-source-pick-first-password :host host))))
+                    (auth-source-pick-first-password :host host :login login)
+                  (auth-source-pick-first-password :host host))))
    (unless password
      (setq password (if (not once)
-			(my/auth-source-flush)
-		      (my/auth-source-password host login t))))
+                        (my/auth-source-flush)
+                      (my/auth-source-password host login t))))
    (unless password
      (user-error
       "my/password-by-host: password not found: %s%s"
