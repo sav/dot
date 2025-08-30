@@ -981,7 +981,11 @@
     ;; '(font-lock-function-call-face :foreground nil :background nil :underline nil :inherti default)
     ;; '(font-lock-property-name-face :foreground nil :background nil :underline nil :inherti default)
     ;; '(font-lock-regexp-face :foreground nil :background nil :underline nil :inherti default)
-    '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face)))
+    '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face))
+  ;;; (eq doom-theme-style 'light)
+  (custom-set-faces!
+    '(fringe :background "#fffffff")
+    '(internal-border :background "#fffffff")))
 
 ;;;
 ;;; $DOOMDIR/config.el ends here
