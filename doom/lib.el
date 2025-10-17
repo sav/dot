@@ -81,7 +81,7 @@
   (if (not (string-equal my/highlight/token (current-word)))
       (and
        (setq my/highlight/token (current-word))
-       (highlight-regexp (current-word) 'hi-green-b))
+       (highlight-regexp (current-word) 'highlight))
     (setq my/highlight/token nil)))
 
 (defvar my/vterm/buffer-name "*doom:vterm-popup:main*")
