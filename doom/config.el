@@ -985,6 +985,7 @@
     '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face))
   ;;; (eq doom-theme-style 'light)
   (custom-set-faces!
+    '(highlight :inherit (mode-line-highlight mode-line-buffer-id) :foreground "black" :background "yellow")
     '(fringe :background "#fffffff")
     '(internal-border :background "#fffffff")))
 
