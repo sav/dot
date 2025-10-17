@@ -221,6 +221,10 @@
 
 (map! "C-c o n" (lambda () (interactive) (my/org/open "notes")))
 
+(map! "C-c o N n" (lambda () (interactive) (my/org/open-plain "notes/current")))
+
+(map! "C-c o N e" (lambda () (interactive) (my/org/open "notes/current")))
+
 (map! "C-c o s" #'+doom-dashboard/open)
 
 (map! "C-c o S" #'my/scratch/show)
