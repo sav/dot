@@ -549,6 +549,7 @@
    org-blank-before-new-entry '((heading) (plain-list-item))
    org-clock-persist t
    org-clock-persist-file (expand-file-name "~/.emacs.org-clock-save.el")
+   org-cycle-open-archived-trees t
    org-crypt-disable-auto-save t
    org-crypt-key "10356E2DE5C67FB0"
    org-crypt-tag-matcher "Secret"
