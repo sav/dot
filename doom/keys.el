@@ -177,6 +177,8 @@
 
 (map! "C-c C-c C-l" #'org-store-link)
 
+(map! "C-c C-x C-g" #'org-clock-remove-overlays)
+
 (map! "C-c C-c C-m" #'magit)
 
 (map! "C-c C-c o" #'browse-url-at-point)
