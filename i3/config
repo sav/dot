@@ -1,0 +1,300 @@
+## ~/.i3/config - Oct 14 2025, sav@keres -*- mode: i3wm-config; -*-
+
+set                     $terminal kitty
+set                     $termclass kitty
+set                     $alt Mod1
+set                     $mod Mod4
+set                     $lmb button1
+set                     $rmb button3
+
+## Wokspaces
+
+set                     $src  "   0: src "
+set                     $dev  "   1: dev "
+set                     $web  "   2: web "
+set                     $app  "   3: app "
+set                     $sys  "   4: sys "
+set                     $aux  "   5: aux "
+set                     $xbg  "   6: xbg "
+set                     $ws7  "   7: ... "
+set                     $ws8  "   8: ... "
+set                     $ws9  "   9: ... "
+set                     $ws10 "  10: ... "
+
+## Startup
+
+exec                    --no-startup-id my.xscreensaver
+exec                    --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
+exec                    --no-startup-id /usr/libexec/pipewire-module-xrdp/load_pw_modules.sh
+exec                    --no-startup-id my.start-apps
+
+exec_always             --no-startup-id my.notify-daemon && my.notify-off
+exec_always             --no-startup-id my.i3-tray
+exec_always             --no-startup-id my.copyq
+exec_always             --no-startup-id my.i3-bg
+exec_always             --no-startup-id my.keyboard
+exec_always             --no-startup-id my.compositor
+
+## Usability
+
+default_orientation     horizontal
+workspace_layout        tabbed
+mouse_warping           none
+popup_during_fullscreen smart
+focus_follows_mouse     no
+workspace_auto_back_and_forth no
+tiling_drag             modifier titlebar
+
+## Appearance
+
+floating_modifier       $alt
+font                    pango:Encode Sans Condensed 9.5
+title_align             left
+default_border          normal 4
+default_floating_border normal
+floating_minimum_size   12x12
+floating_maximum_size   2240x1400
+hide_edge_borders       smart
+show_marks              yes
+smart_gaps              on
+workspace               $web gaps inner 24px
+workspace               $app gaps inner 24px
+
+## Theme
+
+include                 ~/.config/i3/light.conf
+
+## Mouse bindings
+
+bindsym                 --whole-window $mod+$lmb floating toggle, resize set 1920 1080, move position center
+bindsym                 --whole-window $mod+Control+$lmb mark --toggle selected
+
+## Keyboard Bindings
+
+bindsym                 $mod+F1 reload
+bindsym                 $mod+F2 reload,restart
+bindsym                 $mod+F11 exec my.xsel-bluetooth
+bindsym                 $mod+F12 exec my.xsel-pavucontrol
+bindsym                 $mod+Control+space exec my.keyboard-switch
+bindsym                 $mod+Control+r exec my.i3-apps
+bindsym                 $mod+r exec my.i3-run
+bindsym                 $mod+x exec my.i3-desktop-list
+bindsym                 $mod+c exec my.xsel-term-alt
+bindsym                 $mod+n exec my.xsel mpd
+bindsym                 $mod+$alt+space border toggle
+bindsym                 $mod+t border toggle
+bindsym                 $mod+a floating toggle
+bindsym                 $mod+Control+s move position center
+bindsym                 $mod+Control+f fullscreen toggle
+bindsym                 $mod+Control+c kill
+bindsym                 $mod+Control+l exec my.i3-lock
+bindsym                 $mod+BackSpace exec my.i3-exit
+bindsym                 $mod+Control+BackSpace exit
+bindsym                 $mod+Shift+o exec my.touchpad-toggle
+bindsym                 $mod+Shift+4 exec my.screenshot
+bindsym                 $mod+v move position 0 0
+bindsym                 $mod+g move position 1598 0
+bindsym                 $mod+Control+q floating enable,resize set 2240 1400,move position 0 0
+bindsym                 $mod+Control+v floating enable,resize set 2240 1400,move position 800 0
+bindsym                 $mod+Control+g floating enable,resize set 2240 1400,move position 1598 0
+bindsym                 $mod+Shift+q floating enable,resize set 2240 1400,move position 0 178
+bindsym                 $mod+Shift+v floating enable,resize set 2240 1400,move position 800 178
+bindsym                 $mod+Shift+g floating enable,resize set 2240 1400,move position 1598 178
+
+## Notification
+
+bindsym                 $mod+Control+n exec my.dnd
+bindsym                 $mod+period exec my.notify-pop
+bindsym                 $mod+Shift+n exec my.notify-daemon
+bindsym                 $mod+z exec my.notify-clear
+
+## Apps
+
+bindsym                 $mod+w exec my.xsel-browser
+bindsym                 $mod+Control+w exec my.xsel-browser-secondary
+bindsym                 $mod+slash exec my.xsel-qute
+bindsym                 $mod+o exec my.xsel-alacritty
+bindsym                 $mod+Control+o exec my.xsel meld
+bindsym                 $mod+e exec my.xsel-emacs
+bindsym                 $mod+$alt+e exec my.emacs-everywhere
+bindsym                 $mod+Control+e exec my.xsel-cursor
+bindsym                 $mod+q exec my.xsel code
+bindsym                 $alt+Shift+F1 exec my.emacs-other-window
+bindsym                 $alt+Shift+F2 exec my.emacs-other-tab
+bindsym                 $mod+s exec my.xsel-term
+bindsym                 $mod+Shift+x exec my.emacs-term -c
+bindsym                 $mod+Shift+f exec my.xsel-file
+bindsym                 $mod+Shift+period exec my.sync-status-notify
+bindsym                 $mod+Control+period exec my.sync-commit
+
+## Layouts
+
+bindsym                 $mod+Control+a layout tabbed
+bindsym                 $mod+Shift+w layout toggle split
+bindsym                 $mod+Control+Shift+w layout stacking
+bindsym                 $mod+Control+Shift+s layout stacking
+
+## Focus
+
+bindsym                 $mod+p focus parent
+bindsym                 $mod+Shift+p focus child
+bindsym                 $mod+Shift+c focus child
+bindsym                 $mod+Shift+i focus left, split h
+bindsym                 $mod+Tab focus parent, focus right, focus child
+bindsym                 $mod+Control+Tab focus parent, focus left, focus child
+bindsym                 $mod+Shift+Tab focus parent, focus left, focus child
+bindsym                 $mod+$alt+Tab focus mode_toggle
+bindsym                 $mod+grave focus mode_toggle
+bindsym                 $mod+apostrophe focus mode_toggle
+
+bindsym                 $mod+h focus left
+bindsym                 $mod+k focus down
+bindsym                 $mod+j focus up
+bindsym                 $mod+l focus right
+
+bindsym                 $mod+shift+Left focus left
+bindsym                 $mod+shift+Down focus down
+bindsym                 $mod+shift+Up focus up
+bindsym                 $mod+shift+Right focus right
+
+bindsym                 $mod+$alt+Left focus left
+bindsym                 $mod+$alt+Down focus down
+bindsym                 $mod+$alt+Up focus up
+bindsym                 $mod+$alt+Right focus right
+
+bindsym                 $alt+Tab focus right
+bindsym                 $alt+Control+Tab focus left
+
+## Resize
+
+bindsym                 $mod+Ctrl+Up resize shrink height 16 px
+bindsym                 $mod+Ctrl+Down resize grow height 16 px
+bindsym                 $mod+Ctrl+Left resize shrink width 16 px
+bindsym                 $mod+Ctrl+Right resize grow width 16 px
+
+bindsym                 $mod+Ctrl+Shift+Up resize shrink height 8 px
+bindsym                 $mod+Ctrl+Shift+Down resize grow height 8 px
+bindsym                 $mod+Ctrl+Shift+Left resize shrink width 8 px 
+bindsym                 $mod+Ctrl+Shift+Right resize grow width 8 px
+
+## Move
+
+bindsym                 $mod+Left move left 16 px
+bindsym                 $mod+Down move down 16 px
+bindsym                 $mod+Up move up 16 px
+bindsym                 $mod+Right move right 16 px
+
+## Sticky
+
+bindsym                 $mod+shift+Return sticky toggle
+
+## Media Keys
+
+bindsym                 XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym                 XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym                 XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym                 XF86MonBrightnessUp exec light -A 10
+bindsym                 XF86MonBrightnessDown exec light -U 10
+bindsym                 XF86AudioPlay exec playerctl play
+bindsym                 XF86AudioPause exec playerctl pause
+bindsym                 XF86AudioNext exec playerctl next
+bindsym                 XF86AudioPrev exec playerctl previous
+
+## Switch workspaces
+
+bindsym                 $mod+0 workspace number $src
+bindsym                 $mod+1 workspace number $dev
+bindsym                 $mod+2 workspace number $web
+bindsym                 $mod+3 workspace number $app
+bindsym                 $mod+4 workspace number $sys
+bindsym                 $mod+5 workspace number $aux
+bindsym                 $mod+6 workspace number $xbg
+bindsym                 $mod+7 workspace number $ws7
+bindsym                 $mod+8 workspace number $ws8
+bindsym                 $mod+9 workspace number $ws9
+
+## Move windows
+
+bindsym                 $mod+Control+0 move container to workspace number $src
+bindsym                 $mod+Control+1 move container to workspace number $dev
+bindsym                 $mod+Control+2 move container to workspace number $web
+bindsym                 $mod+Control+3 move container to workspace number $app
+bindsym                 $mod+Control+4 move container to workspace number $sys
+bindsym                 $mod+Control+5 move container to workspace number $aux
+bindsym                 $mod+Control+6 move container to workspace number $xbg
+bindsym                 $mod+Control+7 move container to workspace number $ws7
+bindsym                 $mod+Control+8 move container to workspace number $ws8
+bindsym                 $mod+Control+9 move container to workspace number $ws9
+
+## Bar
+
+bindsym                 $mod+Shift+m bar hidden_state toggle
+bindsym                 $mod+m bar mode toggle
+
+## Scratchpad
+
+bindsym                 $mod+d scratchpad show
+bindsym                 $mod+f move scratchpad
+
+## Marking
+
+set                     $mode_launcher Mark Mode
+
+bindsym                 $mod+Return mode "$mode_launcher"
+bindsym                 $mod+Control Return mark --toggle selected
+bindsym                 $mod+space [con_mark="selected"] focus
+
+bindsym                 $mod+Control+backslash exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+bindsym                 $mod+backslash exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+mode "$mode_launcher" {
+    bindsym             s mark selected; mode "default"
+    bindsym             u unmark selected; mode "default"
+    bindsym             w swap container with mark selected; unmark selected; mode "default";
+    bindsym             f [con_mark="selected"] focus; mode "default"
+    bindsym             m move window to mark selected; mode "default"
+    bindsym             Return mark --toggle selected; mode "default"
+    bindsym             $mod+Return mark --toggle selected; mode "default"
+
+    bindsym             Escape mode "default"
+    bindsym             Return mode "default"
+    bindsym             Ctrl+g mode "default"
+}
+
+## Workspace assignment
+
+assign                  [class="Emacs"]             → $dev
+assign                  [class="Code"]              → $dev
+assign                  [class="kitty"]             → $dev
+assign                  [class="Alacritty"]         → $dev
+assign                  [class="firefox_firefox"]   → $web
+assign                  [class="Brave-browser"]     → $web
+assign                  [class="cantata"]           → $app
+assign                  [class="Caja"]              → $app
+assign                  [class="Blueman-manager"]   → $app
+assign                  [class="Pavucontrol"]       → $app
+assign                  [class="org.gnome.clocks"]  → $app
+assign                  [class="Pomodorolm"]        → $app
+
+## Per-class behavior
+
+for_window              [workspace=$app] split h
+for_window              [window_role="pop-up"] floating enable, focus toggle, move position center
+for_window              [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, focus toggle, move position center
+for_window              [class="Code"] fullscreen enable
+for_window              [class="qutebrowser"] floating enable, border normal, move position center
+for_window              [class="copyq"] floating enable, resize set 834 709, move position center
+for_window              [class="gnome-calendar"] floating enable, resize set 1540 852, move position 0 0, move scratchpad
+for_window              [class="Gnome-screenshot"] floating enable, move position 0 0
+for_window              [class="Gpick"] floating enable, move position center
+for_window              [class="quassel"] floating enable, resize set 1100 850, move position center
+for_window              [class="mpv"] floating enable, move position 0 0, move scratchpad, scratchpad show
+for_window              [class="krunner"] floating enable, focus toggle
+for_window              [class="plasma-systemmonitor"] floating enable, resize set 816 963, move position 0 0
+for_window              [class="hexchat"] floating enable, resize set 891 911, move position 0 0
+for_window              [class="Xfce4-appfinder"] floating enable, move position center
+for_window              [class="webmacs"] floating enable, resize set 891 910, move position 0 0
+for_window              [class="vlc"] border none
+for_window              [class="mpv"] border none
+
+## vim:et:tw=120:ts=2:sw=2:ft=i3config:
