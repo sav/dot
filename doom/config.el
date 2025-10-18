@@ -978,12 +978,7 @@
     '(font-lock-type-face :foreground "LightCyan3" :background nil :underline nil :inherti default)
     '(font-lock-variable-name-face :foreground "azure4" :background nil :underline nil :inherti default)
     '(font-lock-warning-face :foreground "tan" :background nil :underline nil :inherti default)
-    ;; '(font-lock-doc-markup-face :foreground nil :background nil :underline nil :inherit default)
-    ;; '(font-lock-function-call-face :foreground nil :background nil :underline nil :inherti default)
-    ;; '(font-lock-property-name-face :foreground nil :background nil :underline nil :inherti default)
-    ;; '(font-lock-regexp-face :foreground nil :background nil :underline nil :inherti default)
     '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face))
-  ;;; (eq doom-theme-style 'light)
   (custom-set-faces!
     '(highlight :inherit (mode-line-highlight mode-line-buffer-id) :foreground "black" :background "yellow")
     '(fringe :background "#fffffff")
