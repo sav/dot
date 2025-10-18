@@ -1,0 +1,21 @@
+;;; ~/.doom.el --- doom runtime config -*- mode: emacs-lisp; lexical-binding: t; -*-
+;;;
+;;; Commentary:
+;;; Machine-specific Doom Emacs configuration, loaded from ~/.doom/config.el.
+;;;
+;;; Code:
+
+(setq doom-theme-style 'light)
+
+(setq
+ doom-font-family "Iosevka"
+ doom-serif-font-family "Iosevka Slab"
+ doom-variable-pitch-font "Open Sans"
+ doom-symbol-font-family "FontAwesome"
+ doom-font-size '16
+ doom-font-weight
+ (if (eq doom-theme-style 'dark)
+     'regular
+   'semi-bold))
+
+;;; ~/.doom.el ends here
