@@ -58,7 +58,11 @@
  prettify-symbols-alist '(("->" . ?→))
  frame-title-format '("%n %b  --  %F")
  focus-in-hook nil
- focus-out-hook nil)
+ focus-out-hook nil
+ persp-auto-save-opt 0
+ flycheck-mode-menu-map nil
+ flycheck-global-mode nil
+ lsp-diagnostics-provider :none)
 
 (setq-default
  tab-width 8
@@ -978,11 +982,13 @@
     '(font-lock-type-face :foreground "LightCyan3" :background nil :underline nil :inherti default)
     '(font-lock-variable-name-face :foreground "azure4" :background nil :underline nil :inherti default)
     '(font-lock-warning-face :foreground "tan" :background nil :underline nil :inherti default)
-    '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face))
+    '(org-headline-done :foreground nil :background nil :slant oblique :inherit font-lock-comment-face)
+    '(flycheck-error :underline nil))
   (custom-set-faces!
     '(highlight :inherit (mode-line-highlight mode-line-buffer-id) :foreground "black" :background "yellow")
     '(fringe :background "#fffffff")
-    '(internal-border :background "#fffffff")))
+    '(internal-border :background "#fffffff")
+    '(flycheck-error :underline nil)))
 
 ;;;
 ;;; $DOOMDIR/config.el ends here
