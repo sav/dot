@@ -225,6 +225,8 @@
 
 (map! "C-c o N n" (lambda () (interactive) (my/org/open-plain "notes/current")))
 
+(map! "C-c o N p" (lambda () (interactive) (my/org/open "notes/project")))
+
 (map! "C-c o N e" (lambda () (interactive) (my/org/open "notes/current")))
 
 (map! "C-c o s" #'+doom-dashboard/open)
