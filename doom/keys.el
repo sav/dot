@@ -67,6 +67,8 @@
 
 ;; (map! "C-?" #'treemacs)
 
+(map! "C-|" #'clone-indirect-buffer-other-window)
+
 (map! "C-/" #'+company/complete)
 
 (map! "C-<tab>" #'tab-next)
