@@ -60,16 +60,26 @@
   "Open plain-text Org file by its NAME."
   (find-file (format "%s/%s.org" org-directory name)))
 
-(defun my/debug-on-error ()
-  "Toggle the state of `debug-on-error' variable."
-  (interactive)
-  (setq debug-on-error (not debug-on-error))
-  (setq debug-on-signal debug-on-error)
+(defun my/debug-on-error (&optional local)
+  "Toggle the state of `debug-on-error' variable.
+With prefix argument LOCAL, set variables buffer-locally."
+  (interactive "P")
+  (cond (local
+         (setq-local debug-on-error (not debug-on-error))
+         (setq-local debug-on-signal debug-on-error))
+        ((setq debug-on-error (not debug-on-error))
+         (setq debug-on-signal debug-on-error)))
   (message
    (format
-    "(debug) error: %s, signal %s"
+    "%sdebug on error: %s, debug on signal %s"
+    (if local "[LOCAL] " "")
     (if debug-on-error "ON" "OFF")
     (if debug-on-signal "ON" "OFF"))))
+
+(defun my/debug-call (fn &rest args)
+  (let ((debug-on-error t)
+	(debug-on-signal t))
+    (apply fn args)))
 
 (defvar my/highlight/token nil)
 
