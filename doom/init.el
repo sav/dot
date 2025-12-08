@@ -37,7 +37,7 @@
        vi-tilde-fringe        ;; fringe tildes to mark beyond EOB
        ;; window-select       ;; visually switch windows
        which-key              ;; shows available keybindings in popup
-       workspaces             ;; tab emulation, persistence & separate workspaces
+       ;; workspaces             ;; tab emulation, persistence & separate workspaces
        zen                    ;; distraction-free coding or writing
 
        :editor
