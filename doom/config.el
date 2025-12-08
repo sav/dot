@@ -857,9 +857,11 @@
 
 (use-package! telega)
 
-(use-package! tree-sitter
-  :config
+(after! tree-sitter
   (global-tree-sitter-mode))
+
+(after! treemacs
+  (treemacs-tag-follow-mode -1))
 
 (after! treemacs-all-the-icons
   (treemacs-load-theme 'all-the-icons))
@@ -943,8 +945,6 @@
 ;;;
 
 (add-hook! 'prog-mode-hook #'prettify-symbols-mode)
-
-(add-hook! 'prog-mode-hook #'treemacs-tag-follow-mode)
 
 (add-hook!
  'emacs-startup-hook
