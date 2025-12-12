@@ -60,8 +60,6 @@
  focus-in-hook nil
  focus-out-hook nil
  persp-auto-save-opt 0
- flycheck-mode-menu-map nil
- flycheck-global-mode nil
  lsp-diagnostics-provider :none)
 
 (setq-default
@@ -305,9 +303,9 @@
 (after! flycheck
   (setq flycheck-error-list-minimum-level nil)
   (custom-set-faces!
-    '(flycheck-error ((t (:underline nil))))
-    '(flycheck-warning ((t (:underline nil))))
-    '(flycheck-info ((t (:underline nil))))))
+    '(flycheck-error :underline nil)
+    '(flycheck-warning :underline nil)
+    '(flycheck-info :underline nil)))
 
 (after! google-translate
   (setq
