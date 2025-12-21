@@ -36,6 +36,7 @@
 (package! google-translate)
 (package! gptel)
 (package! hover)
+(package! iedit)
 (package! i3wm)
 (package! i3wm-config-mode)
 (package! info+)
