@@ -65,6 +65,9 @@
   :recipe
   (:host github
    :repo "sav/emacs-pushbullet"))
+;; (package! pushbullet
+;;   :recipe
+;;   (:local-repo "/home/sav/my/src/pushbullet"))
 (package! rainbow-delimiters)
 (package! rainbow-identifiers)
 (package! rainbow-mode)
