@@ -406,16 +406,20 @@
 
 (after! lsp
   (require 'lsp-rust)
+  (require 'lsp-clangd)
   (setq lsp-keymap-prefix "C-c c")
   (setq lsp-auto-select-workspace nil)
   (setq lsp-auto-guess-root nil)
-  (setq
-   lsp-clients-clangd-args
-   "-c ~/.clangd/clangd-config.yaml --header-insertion-decorators=0")
+  ;; (setq
+  ;;  lsp-clients-clangd-args
+  ;;  "-c ~/.clangd/clangd-config.yaml --header-insertion-decorators=0")
+  (setq lsp-clients-clangd-args '("--header-insertion=never" "--clang-tidy"))
   (setq lsp-clients-clangd-executable "/usr/bin/clangd")
   (setq lsp-prefer-flymake nil)
-  (set-lsp-priority! 'clangd 1)
-  (set-lsp-priority! 'ccls 0)
+  (setq lsp-clients-ccls-executable nil)
+  (setq lsp-clients-clangd-executable "clangd")
+  (set-lsp-priority! 'clangd 0)
+  (set-lsp-priority! 'ccls 100)
   (add-hook 'lsp-mode-hook (lambda () (add-hook 'before-save-hook #'lsp-format-buffer nil t)))
   (add-hook 'lsp-mode-hook 'which-key-mode))
 
