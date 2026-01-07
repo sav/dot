@@ -35,6 +35,11 @@
 (package! golint)
 (package! google-translate)
 (package! gptel)
+(package! hackernews
+  :recipe
+  (:host github
+   :repo "clarete/hackernews.el"
+   :files ("*.el" "data")))
 (package! hover)
 (package! iedit)
 (package! i3wm)
