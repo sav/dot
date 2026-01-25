@@ -138,6 +138,69 @@
   (require 'loadhist)
   (require 'hi-lock))
 
+(after! eglot
+  (setq eglot-ignored-server-capabilities
+        '(
+          ;; :completionProvider
+          ;; :typeHierarchyProvider
+          ;; :callHierarchyProvider
+          ;; :signatureHelpProvider
+          ;; :codeActionProvider
+          ;; :definitionProvider
+          ;; :declarationProvider
+          ;; :typeDefinitionProvider
+          ;; :implementationProvider
+          ;; :workspaceSymbolProvider
+          :codeLensProvider
+          :inlayHintProvider
+          :referencesProvider
+          :documentHighlightProvider
+          :documentSymbolProvider
+          :documentFormattingProvider
+          :documentRangeFormattingProvider
+          :documentOnTypeFormattingProvider
+          :documentLinkProvider
+          :hoverProvider
+          :renameProvider
+          :colorProvider
+          :foldingRangeProvider
+          :executeCommandProvider))
+      ;; number of seconds before timing out LSP connection attempts
+      (setq eglot-connect-timeout 15)
+      ;; how eglot indicates there’s are code actions available at point
+      (setq eglot-code-action-indications
+                              '(eldoc-hint))
+      ;; indicator string for code action suggestions
+      (setq eglot-code-action-indicator "→")
+      ;; if non-nil, Eglot attempts to inform server of canceled requests
+      ;; the effect of this notification is implementation defined,
+      ;; and is only useful for some servers.
+      (setq eglot-advertise-cancellation t)
+
+      ;; value is a plist accepting the keys ‘:size’, which controls the
+      ;; size in characters of the buffer (0 disables, nil means
+      ;; infinite), and ‘:format’, which controls the shape of each log
+      ;; entry (‘full’ includes the original JSON, ‘lisp’ uses
+      ;; pretty-printed Lisp).
+      (setq eglot-events-buffer-config
+                              '(:size 0 :format lisp))
+
+      ;; list of Emacs things that Eglot should try to stay of
+      ;; (setq eglot-stay-out-of '(xref eldoc flymake))
+      (setq eglot-stay-out-of '(eldoc))
+
+      ;; if non-nil, always request plaintext responses to hover requests
+      (setq eglot-prefer-plaintext t)
+
+      ;; control blocking of lsp connection attempts
+      ;; nil has the same meaning as 0, i.e. don’t block at all
+      (setq eglot-sync-connect nil)
+
+      ;; if non-nil, show progress of long running LSP server work
+      ;; if set to 'messages, use *Messages* buffer, else use Eglot’s
+      ;;    mode line indicator.
+      (setq eglot-report-progress 'messages))
+
 (use-package! elfeed
   :config
   (setq
@@ -444,6 +507,8 @@
   (setq lsp-ui-sideline-show-hover nil)
   (setq lsp-ui-sideline-show-code-actions nil)
   (setq lsp-ui-doc-enable nil)
+  (setq lsp-log-io nil)
+  (setq lsp-print-performance nil)
   ;; add initialization hooks
   (add-hook 'lsp-after-initialize-hook #'lsp-ui-mode)
   (add-hook 'lsp-ui-mode-hook #'lsp-ui-peek-mode)
