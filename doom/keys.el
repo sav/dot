@@ -65,7 +65,7 @@
 
 (map! "C-*" #'my/highlight)
 
-;; (map! "C-?" #'treemacs)
+;; (map! "C-?" #'lsp-ui-peek-find-definitions)
 
 (map! "C-|" #'clone-indirect-buffer-other-window)
 
@@ -168,22 +168,15 @@
 
 (map! "C-c C-e" #'iedit-mode)
 
+(map! "C-c C-l" #'org-store-link)
+
+(map! "C-c C-m" #'magit)
+
 (map! "C-c C-n" #'next-buffer)
 
+(map! "C-c C-o" #'browse-url-at-point)
+
 (map! "C-c C-p" #'previous-buffer)
-
-
-;; Prefix: C-c C-c
-
-(map! "C-c C-c l" #'org-store-link)
-
-(map! "C-c C-c C-l" #'org-store-link)
-
-(map! "C-c C-x C-g" #'org-clock-remove-overlays)
-
-(map! "C-c C-c C-m" #'magit)
-
-(map! "C-c C-c o" #'browse-url-at-point)
 
 
 ;; Prefix: C-c f
