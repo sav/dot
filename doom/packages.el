@@ -24,6 +24,7 @@
 (package! eat)
 (package! eev)
 (package! elpher)
+(package! exec-path-from-shell)
 (package! flycheck)
 (package! flutter)
 (package! fzf)

@@ -342,6 +342,11 @@
    (setq eww-default-download-directory (expand-file-name "~/dl")
       eww-search-prefix "https://www.google.com/search?q="))
 
+(use-package! exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package! gcmh
    :config
    (gcmh-mode 1))
