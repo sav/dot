@@ -18,10 +18,10 @@
 (load! "~/.doom.el")
 
 (setq
-   doom-theme
-   (cond
-      ((eq doom-theme-style 'dark) 'seti)
-      ((eq doom-theme-style 'light) 'doom-nord-light)))
+ doom-theme
+ (cond
+  ((eq doom-theme-style 'dark) 'doom-ayu-dark)
+  ((eq doom-theme-style 'light) 'doom-nord-light)))
 
 (setq
    doom-font (font-spec :family doom-font-family :size doom-font-size :weight doom-font-weight)
