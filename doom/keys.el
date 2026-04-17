@@ -111,6 +111,8 @@
 
 ;; Prefix: C-M-
 
+(map! "C-M-s" #'isearch-forward-regexp)
+
 (map! "C-M-/" #'treemacs-select-window)
 
 (map! "C-M-?" #'treemacs-select-directory)
@@ -119,6 +121,8 @@
 ;; Prefix: C-M-S-
 
 (map! "C-M-S-c" #'switch-to-minibuffer)
+
+(map! "C-M-S-s" #'isearch-forward-regexp)
 
 
 ;; Prefix: C-c
@@ -168,7 +172,7 @@
 
 (map! "C-c C-e" #'iedit-mode)
 
-(map! "C-c C-l" #'org-store-link)
+(map! "C-c C-l" #'org-insert-link)
 
 (map! "C-c C-m" #'magit)
 
@@ -177,6 +181,8 @@
 (map! "C-c C-o" #'browse-url-at-point)
 
 (map! "C-c C-p" #'previous-buffer)
+
+(map! "C-c C-." #'org-store-link)
 
 
 ;; Prefix: C-c f
@@ -217,6 +223,8 @@
 (map! "C-c o l" (lambda () (interactive) (my/org/open "life")))
 
 (map! "C-c o n" (lambda () (interactive) (my/org/open "notes")))
+
+(map! "C-c o o" (lambda () (interactive) (my/org/open "knowledgebase")))
 
 (map! "C-c o N n" (lambda () (interactive) (my/org/open-plain "notes/current")))
 
