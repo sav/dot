@@ -112,20 +112,20 @@
 	    (lambda () (setq c-basic-offset 4))))
 
 (after! centaur-tabs
-   (setq
-      centaur-tabs-adjust-buffer-order nil
-      centaur-tabs-cycle-scope 'tabs
-      centaur-tabs-enable-key-bindings t
-      centaur-tabs-set-bar 'under)
-   (defun centaur-tabs-buffer-groups ()
-      (list
-         (cond
-            ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
-            ((derived-mode-p 'prog-mode) "Editing")
-            ((derived-mode-p 'dired-mode) "Dired")
-            ((memq major-mode '(helpful-mode help-mode)) "Help")
-            (t "Main"))))
-   (centaur-tabs-mode))
+  (setq
+   centaur-tabs-adjust-buffer-order nil
+   centaur-tabs-cycle-scope 'tabs
+   centaur-tabs-enable-key-bindings t
+   centaur-tabs-set-bar 'under)
+  (defun centaur-tabs-buffer-groups ()
+    (list
+     (cond
+      ((string-equal "*" (substring (buffer-name) 0 1)) "Emacs")
+      ((derived-mode-p 'prog-mode) "Editing")
+      ((derived-mode-p 'dired-mode) "Dired")
+      ((memq major-mode '(helpful-mode help-mode)) "Help")
+      (t "Main"))))
+  (centaur-tabs-mode))
 
 (use-package! company
    :demand t
@@ -362,8 +362,8 @@
   (exec-path-from-shell-initialize))
 
 (use-package! gcmh
-   :config
-   (gcmh-mode 1))
+  :config
+  (gcmh-mode 1))
 
 (after! gdb
    (setq
