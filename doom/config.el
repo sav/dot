@@ -104,6 +104,13 @@
       browse-url-chrome-program "my.xsel-browser"
       browse-url-chromium-program "my.xsel-browser"))
 
+(after! cc-mode
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq c-basic-offset 4)
+  (add-hook 'c++-mode-hook
+	    (lambda () (setq c-basic-offset 4))))
+
 (after! centaur-tabs
    (setq
       centaur-tabs-adjust-buffer-order nil
