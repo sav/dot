@@ -311,6 +311,13 @@
           "https://www.zerodayinitiative.com/rss/upcoming/"
           "https://xairy.io/feed.xml")))
 
+(use-package! ellama
+  :init
+  (require 'llm-ollama)
+  (setopt ellama-provider
+	  (make-llm-ollama
+           :chat-model "qwen2.5-coder:7b")))
+
 (after! epa
    :config
    (require 'epg)

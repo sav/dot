@@ -23,6 +23,7 @@
 (package! dash)
 (package! eat)
 (package! eev)
+(package! ellama)
 (package! elpher)
 (package! exec-path-from-shell)
 (package! flycheck)
